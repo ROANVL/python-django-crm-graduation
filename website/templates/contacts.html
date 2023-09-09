@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+
+
+
+
+<div class="flex-box">
+
+{%include 'sidenav.html' %}
+
+
+    <div class="content_btn_table">
+
+        <div class="add_btn  mb-3 text-end">
+            <a href="{% url 'add_record' %}" class="btn btn-secondary">Add record</a> <!-- btn
+                            btn-success - green -->
+        </div>
+
+
+        <div class="add_btn  mb-3 text-end">
+            <table class="table table-striped table-hover table-bordered table-sm" id="myTable"
+                style="table-layout: fixed;">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Zipcode</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    <tr>
+                        <th scope="col" colspan="8"><input class="search_by_name" type="text" oninput="myFunction()"
+                                placeholder="Search by..."></th>
+                        <th><select class="filter_by" onchange="myFunction()">
+                                <option value="0">Name</option>
+                                <option value="1">Email</option>
+                                <option value="2">Phone</option>
+                                <option value="3">Address</option>
+                                <option value="4">City</option>
+                                <option value="5">State</option>
+                                <option value="6">Zipcode</option>
+                                <option value="7">Created At</option>
+                            </select>
+                        </th>
+                    </tr>
+                </thead>
+
+
+                <tbody style="text-align: left;">
+
+                    {% if records %}
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.last_name }} {{ record.first_name }}</td>
+                        <td>{{ record.email }}</td>
+                        <td>{{ record.phone }}</td>
+                        <td>{{ record.address }}</td>
+                        <td>{{ record.city }}</td>
+                        <td>{{ record.state }}</td>
+                        <td>{{ record.zipcode }}</td>
+                        <td>{{ record.created_at }}</td>
+                        <td id="td_actions">
+                            <div class="button_groupe">
+                                <a href="{% url 'record' record.id %}" class="btn btn-secondary">View</a>
+                                <a href="{% url 'update_record' record.id %}" class="btn btn-secondary">Edit</a> <!-- btn
+                                btn-primary - blue -->
+                                <a href="{% url 'delete_record' record.id %}" class="btn btn-secondary">Del</a> <!-- btn
+                                btn-danger - red --></td>
+                        </div>
+                    </tr>
+                    {% endfor %}
+
+                    {% endif %}
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <!-- Выпадающий список для выбора количества строк на странице -->
+        <div class="rows-per-page">
+            <label for="rowsPerPage">Rows per page:</label>
+            <select id="rowsPerPage" onchange="changeRowsPerPage()">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+
+
+
+        <div class="pagination_prev_next">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end" id="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" onclick="changePage('prev')">Previous</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+{% else %}
+
+<div class="col-md-6 offset-md-3">
+    <h1>Login to get started</h1>
+    <br />
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" , placeholder="Username" required>
+
+        </div><br />
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" , placeholder="Password" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-secondary">Login</button>
+
+    </form>
+
+
+
+    {% endif %}
+
+    {% endblock %}

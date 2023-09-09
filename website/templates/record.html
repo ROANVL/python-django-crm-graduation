@@ -1,54 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="card">
-    <div class="card-header"><strong>
-            {{ customer_record.first_name }}
-            {{ customer_record.last_name }}</strong>
-    </div>
-    <div class="card-body">
+<div class="col-md-6 offset-md-3">
+    <div class="record_card">
+        <h1>View Record</h1>
 
-        <p class="card-text">
-            <strong>Email: </strong>{{ customer_record.email }}
-        </p>
+        <strong>First name: </strong>
+        <p class="white-cell"> {{ customer_record.first_name }}</p>
+        
+        <strong>Last name : </strong>
+        <p class="white-cell">{{ customer_record.last_name }}</p>
+        
+        <strong>Email: </strong>
+        <p class="white-cell">{{ customer_record.email }}</p>
 
-        <p class="card-text">
-            <strong>Phone: </strong>{{ customer_record.phone }}
-        </p>
+        <strong>Phone: </strong>
+        <p class="white-cell">{{ customer_record.phone }}</p>
 
-        <p class="card-text">
-            <strong>Address: </strong>{{ customer_record.address }}
-        </p>
+        <strong>Address: </strong>
+        <p class="white-cell">{{ customer_record.address }}</p>
 
-        <p class="card-text">
-            <strong>City: </strong>{{ customer_record.city }}
-        </p>
+        <strong>City: </strong>
+        <p class="white-cell">{{ customer_record.city }}</p>
 
-        <p class="card-text">
-            <strong>State: </strong>{{ customer_record.state }}
-        </p>
+        <strong>State: </strong>
+        <p class="white-cell">{{ customer_record.state }}</p>
 
-        <p class="card-text">
-            <strong>Zipcode: </strong>{{ customer_record.zipcode }}
-        </p>
+        <strong>Zipcode: </strong>
+        <p class="white-cell">{{ customer_record.zipcode }}</p>
 
-        <p class="card-text">
-            <strong>Create At: </strong>{{ customer_record.created_at }}
-        </p>
+        <strong>Create At: </strong>
+        <p class="white-cell">{{ customer_record.created_at }}</p>
 
-        <p class="card-text">
-            <strong>ID: </strong>{{ customer_record.id }}
-        </p>
+        <div class="view_button_groupe">
+            <a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Update record</a>
+            <!-- <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-secondary">Delete</a> -->
+            <a href="{% url 'contacts' %}" class="btn btn-secondary">Back</a>
 
+        </div>
     </div>
 </div>
 
-<br><br>
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 
-<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete</a>
-
-<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Update record</a>
 
 
 {% endblock%}

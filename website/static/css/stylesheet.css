@@ -1,0 +1,448 @@
+/* СТИЛИЗАЦИЯ ФОРМЫ LOGIN */
+/* Ограничиваем максимальную ширину формы и центрируем ее */
+.login-form {
+    max-width: 30em;
+    /* Ограничиваем максимальную ширину формы на 30em (эмов) */
+    margin: 0 auto;
+    /* Центрирование по горизонтали */
+    margin-top: 10%;
+    /* Отступ сверху */
+    background-color: #f0f0f0;
+    /* Цвет фона */
+    padding: 20px;
+    /* Внутренний отступ */
+    border: 1px solid #ccc;
+    /* Граница */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Тень блока */
+}
+
+/* Стилизация текстовых полей ввода типа "text" и "password" */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    /* Занимать всю доступную ширину */
+    padding: 10px;
+    /* Внутренний отступ вокруг текста */
+    margin-bottom: 10px;
+    /* Отступ снизу */
+    border: 1px solid #ccc;
+    /* Граница */
+    border-radius: 4px;
+    /* Скругленные углы */
+    outline: none;
+    /* Убираем стандартный контур при фокусе */
+}
+
+/* Стилизация фокуса на текстовых полях ввода */
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #007bff;
+    /* Изменение цвета границы при фокусе */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* Тень при фокусе */
+}
+
+/* Стилизация кнопки */
+.login-form button {
+    width: 100%;
+    /* Занимать всю доступную ширину */
+    padding: 3%;
+    /* Внутренний отступ кнопки */
+    background-color: rgb(58, 63, 65) !important;
+    /* Цвет фона кнопки */
+    color: #fff;
+    /* Цвет текста кнопки */
+    border: none;
+    /* Убираем границу */
+    border-radius: 4px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Изменение курсора при наведении */
+}
+
+/* Стилизация кнопки при наведении */
+.login-form button:hover {
+    background-color: #0056b3;
+    /* Изменение цвета фона при наведении */
+    /* Hover color */
+}
+
+
+
+
+
+
+
+
+
+/* СТИЛИЗАЦИЯ ФОРМЫ REGISTER */
+/* Ограничиваем максимальную ширину формы и центрируем ее */
+.register-form {
+    max-width: 30em;
+    /* Ограничиваем максимальную ширину формы на 30em (эмов) */
+    margin: 0 auto;
+    /* Центрирование по горизонтали */
+    margin-top: 10%;
+    /* Отступ сверху */
+    background-color: #f0f0f0;
+    /* Цвет фона */
+    padding: 20px;
+    /* Внутренний отступ */
+    border: 1px solid #ccc;
+    /* Граница */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Тень блока */
+}
+
+/* Стилизация текстовых полей ввода типа "text" и "password" */
+.register-form input[type="text"],
+.register-form input[type="password"] {
+    width: 100%;
+    /* Занимать всю доступную ширину */
+    padding: 10px;
+    /* Внутренний отступ вокруг текста */
+    margin-bottom: 10px;
+    /* Отступ снизу */
+    border: 1px solid #ccc;
+    /* Граница */
+    border-radius: 4px;
+    /* Скругленные углы */
+    outline: none;
+    /* Убираем стандартный контур при фокусе */
+}
+
+/* Стилизация фокуса на текстовых полях ввода */
+.register-form input[type="text"]:focus,
+.register-form input[type="password"]:focus {
+    border-color: #007bff;
+    /* Изменение цвета границы при фокусе */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* Тень при фокусе */
+}
+
+/* Стилизация кнопки */
+.register-form button {
+    width: 100%;
+    /* Занимать всю доступную ширину */
+    padding: 3%;
+    /* Внутренний отступ кнопки */
+    margin: 1%;
+    /* Внешний отступ кнопки */
+    background-color: rgb(58, 63, 65) !important;
+    /* Цвет фона кнопки */
+    color: #fff;
+    /* Цвет текста кнопки */
+    border: none;
+    /* Убираем границу */
+    border-radius: 4px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Изменение курсора при наведении */
+}
+
+/* Стилизация кнопки при наведении */
+.register-form button:hover {
+    background-color: #0056b3;
+    /* Изменение цвета фона при наведении */
+    /* Hover color */
+}
+
+
+
+
+
+
+
+
+
+/* СТИЛИЗАЦИЯ КНОПКИ LOGIN / REGISTER / LOGOUT */
+.navbar-collapse {
+    /* Отключаем возможность растягивания элемента */
+    flex-grow: 0;
+    /* Создаем контейнер с горизонтальным выравниванием по центру */
+    display: flex;
+    justify-content: center;
+    /* Выравниваем содержимое по вертикали по центру */
+    align-items: center;
+    /* Устанавливаем белую границу толщиной 1px */
+    border: 1px solid white;
+    /* Устанавливаем ширину элемента на 7% от родительского контейнера */
+    width: 7%;
+    /* Убираем внутренние отступы внутри элемента */
+    padding: 0;
+    /* Ограничиваем размеры содержимого элемента */
+    overflow: hidden;
+    /* Запрещаем перенос текста на новую строку */
+    white-space: nowrap;
+    /* Если текст слишком длинный, добавляем многоточие */
+    text-overflow: ellipsis;
+    /* Выравниваем текст по центру по горизонтали */
+    text-align: center;
+    /* Устанавливаем размер шрифта (замените XXpx на желаемый размер) */
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+/* СТИЛИЗАЦИЯ БОКОВОЙ НАВИГАЦИИ */
+.sidenav {
+    border: 1px solid red;
+    /* Граница с толщиной 1 пиксель, красного цвета */
+    margin: 5px;
+    /* Внешние отступы по 5 пикселей */
+    width: 10%;
+    /* Ширина 10% от родительского элемента */
+    background-color: rgb(58, 63, 65) !important;
+    /* Цвет фона сайдбара (важный) */
+}
+
+.sidenav_menu {
+    list-style-type: none;
+    /* Убираем маркеры списка */
+    padding: 0;
+    /* Убираем внутренние отступы */
+    margin: 0;
+    /* Убираем внешние отступы */
+    width: 100%;
+    /* Занимает 100% ширины родительского элемента */
+}
+
+.sidenav_menu li a {
+    padding: 12px;
+    /* Внутренний отступ */
+    text-decoration: none;
+    /* Убираем подчеркивание у ссылок */
+    color: #dcdad7;
+    /* Цвет текста (светлый серый) */
+    display: block;
+    /* Блочный элемент (занимает всю ширину родителя) */
+}
+
+.sidenav_menu li a:hover {
+    background-color: #eee;
+    /* Фон при наведении (светло-серый) */
+    color: black;
+    /* Цвет текста при наведении (черный) */
+}
+
+
+
+
+
+
+
+
+
+/* СТИЛИЗАЦИЯ ТАБЛИЦЫ */
+
+/* ПОИСКОВАЯ СТРОКА */
+.search_by_name {
+    width: 100%;
+    height: 15px;
+    margin-bottom: 10px;
+
+}
+
+.filter_by {
+    width: 100%;
+    height: 25px;
+    margin-bottom: 9px;
+    color: black;
+    font-style: italic;
+    font-size: 18px;
+    background-color: white;
+}
+
+/* Поисковая строкаю Стилизация placeholder */
+::placeholder {
+    color: black;
+    font-style: italic;
+}
+
+/* Поисковая строка. Стилизация введенного текста */
+input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+}
+
+/* Стилизация шапки таблицы */
+.table-dark {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Стилизация пагинации */
+.pagination {
+    margin: 0.5em;
+}
+
+.pagination_prev_next {
+    border: 1px solid red;
+    margin: 5px;
+
+}
+
+.rows-per-page {
+    border: 1px solid red;
+    margin: 5px;
+    font-style: italic;
+    font-size: 18px;
+    text-align: right !important;
+}
+
+
+#rowsPerPage {
+    margin: 0.5em;
+}
+
+
+
+
+
+
+
+
+
+/* СТИЛИЗАЦИЯ КАРТОЧЕК */
+/* Стилизация формы add */
+.add_record_form {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилизация формы add */
+.update_record_form {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилизация формы карточки записи */
+.record_card {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.record_card-text {
+    margin-bottom: 5px;
+    /* Добавляет небольшие отступы между текстовыми блоками */
+}
+
+.white-cell {
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.view_button_groupe {
+    padding-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* СТИЛИЗАЦИЯ FOOTER */
+.footer {
+    flex-shrink: 0;
+    background-color: rgb(58, 63, 65) !important;
+    height: 40px;
+}
+
+
+
+
+
+
+
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.footer {
+    flex-shrink: 0;
+    background-color: rgb(58, 63, 65) !important;
+    height: 40px;
+}
+
+
+
+#td_actions {
+    text-align: center;
+    width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.flex-box {
+    display: flex;
+}
+
+
+.add_btn {
+    border: 1px solid red;
+    margin: 5px;
+}
+
+.table {
+    border: 1px solid red;
+    margin: 5px;
+    width: 99.5%;
+}
+
+.content_btn_table {
+    border: 1px solid red;
+    margin: 5px;
+    width: 100%;
+}

@@ -12,10 +12,14 @@ class SignUpForm(UserCreationForm):
     last_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'Last Name'}))
 
+    # New field for agreement checkbox
+    agree_to_terms = forms.BooleanField(
+        label="I agree to the terms and conditions", required=True, widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
+
     class Meta:
         model = User
         fields = ("username", "first_name", "last_name",
-                  "email", "password1", "password2")
+                  "email", "password1", "password2", "agree_to_terms")
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -35,8 +39,8 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
 
-
 # Create add record form
+
 
 class AddRecordForm(forms.ModelForm):
     first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(

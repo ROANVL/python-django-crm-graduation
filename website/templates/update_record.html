@@ -2,17 +2,14 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-    <h1>Add Record</h1>
-    <br />
-
-    <form method="POST">
+    
+    <form method="POST" class="update_record_form">
         {% csrf_token %}
-
+        <h1>Update Record</h1>
         {{ form.as_p }}
 
-        <br />
-        <button type="submit" class="btn btn-secondary">Update Record</button>
-        <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-secondary">Save</button>  <!-- btn btn-success   green-->
+        <a href="{% url 'contacts' %}" class="btn btn-secondary">Back</a>
 
     </form>
 
