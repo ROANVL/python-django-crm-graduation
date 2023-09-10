@@ -5,6 +5,9 @@
     <div class="record_card">
         <h1>View Record</h1>
 
+         <strong>Company: </strong>
+        <p class="white-cell"> {{ customer_record.company }}</p>
+
         <strong>First name: </strong>
         <p class="white-cell"> {{ customer_record.first_name }}</p>
         
@@ -33,7 +36,7 @@
         <p class="white-cell">{{ customer_record.created_at }}</p>
 
         <div class="view_button_groupe">
-            <a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Update record</a>
+            <a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Update</a>
             <!-- <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-secondary">Delete</a> -->
             <a href="{% url 'contacts' %}" class="btn btn-secondary">Back</a>
 

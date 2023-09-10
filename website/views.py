@@ -108,7 +108,7 @@ def add_record(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             if form.is_valid():
-                add_record = form.save()
+                form.save()
                 messages.success(
                     request, "The record has been successfully added.")
                 return redirect("contacts")
