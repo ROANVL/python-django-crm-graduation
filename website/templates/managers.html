@@ -17,7 +17,7 @@
     <div class="content_btn_table">
 
         <div class="add_btn  mb-3 text-end">
-            <a href="{% url 'add_record' %}" class="btn btn-secondary">Add record</a> <!-- btn
+            <a href="{% url 'add_manager' %}" class="btn btn-secondary">Add manager</a> <!-- btn
                             btn-success - green -->
         </div>
 
@@ -28,28 +28,24 @@
                     <tr>
                         <th scope="col">First name</th>
                         <th scope="col">Last name</th>
-                        <th scope="col">Company</th>
-                        <th scope="col">Job Title</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Social_media</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Created At</th>
+                        <th scope="col">Job title</th>
+                        <th scope="col">Departament</th>
+                        <th scope="col">Start Date</th>
                         <th scope="col">Actions</th>
                     </tr>
                     <tr>
-                        <th scope="col" colspan="9"><input class="search_by_name" type="text" oninput="myFunction()"
+                        <th scope="col" colspan="7"><input class="search_by_name" type="text" oninput="myFunction()"
                                 placeholder="Search by..."></th>
                         <th><select class="filter_by" onchange="myFunction()">
                                 <option value="0">First name</option>
                                 <option value="1">Last name</option>
-                                <option value="2">Company</option>
-                                <option value="3">Job Title</option>
-                                <option value="4">Phone</option>
-                                <option value="5">Email</option>
-                                <option value="6">Social_media</option>
-                                <option value="7">Description</option>
-                                <option value="8">Created At</option>
+                                <option value="2">Phone</option>
+                                <option value="3">Email</option>
+                                <option value="4">Job title</option>
+                                <option value="5">Departament</option>
+                                <option value="6">Start Date</option>
                             </select>
                         </th>
                     </tr>
@@ -58,24 +54,22 @@
 
                 <tbody>
 
-                    {% if records %}
-                    {% for record in records %}
+                    {% if managers_records %}
+                    {% for manager_record in managers_records %}
                     <tr>
-                        <td>{{ record.first_name }}</td>
-                        <td>{{ record.last_name }}</td> 
-                        <td>{{ record.company }}</td>
-                        <td>{{ record.job_title }}</td>
-                        <td>{{ record.phone }}</td>
-                        <td>{{ record.email }}</td>
-                        <td>{{ record.social_media }}</td>
-                        <td>{{ record.description }}</td>
-                        <td>{{ record.created_at }}</td>
+                        <td>{{ manager_record.first_name }}</td>
+                        <td>{{ manager_record.last_name }}</td> 
+                        <td>{{ manager_record.phone }}</td>
+                        <td>{{ manager_record.email }}</td>
+                        <td>{{ manager_record.job_title }}</td>
+                        <td>{{ manager_record.department }}</td>
+                        <td>{{ manager_record.start_date }}</td>
                         <td id="td_actions">
                             <div class="button_groupe">
-                                <a href="{% url 'record' record.contact_id %}" class="btn btn-secondary">View</a>
-                                <a href="{% url 'update_record' record.contact_id %}" class="btn btn-secondary">Edit</a> <!-- btn
+                                <a href="{% url 'manager_record' manager_record.manager_id %}" class="btn btn-secondary">View</a>
+                                <a href="{% url 'update_manager' manager_record.manager_id %}" class="btn btn-secondary">Edit</a> <!-- btn
                                 btn-primary - blue -->
-                                <a href="{% url 'delete_record' record.contact_id %}" class="btn btn-secondary">Del</a> <!-- btn
+                                <a href="{% url 'delete_manager' manager_record.manager_id %}" class="btn btn-secondary">Del</a> <!-- btn
                                 btn-danger - red --></td>
                         </div>
                     </tr>

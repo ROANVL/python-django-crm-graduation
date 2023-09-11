@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <div class="record_card">
+        <h1>View Manager Record</h1>
+
+        <strong>First name: </strong>
+        <p class="white-cell"> {{ manager_record.first_name }}</p>
+
+        <strong>Last name: </strong>
+        <p class="white-cell"> {{ manager_record.last_name }}</p>
+
+        <strong>Phone: </strong>
+        <p class="white-cell">{{ manager_record.phone }}</p>
+
+        <strong>Email: </strong>
+        <p class="white-cell">{{ manager_record.email }}</p>
+
+        <strong>Job Title: </strong>
+        <p class="white-cell">{{ manager_record.job_title }}</p>
+
+        <strong>Departament: </strong>
+        <p class="white-cell">{{ manager_record.departament }}</p>
+
+        <strong>Start Date: </strong>
+        <p class="white-cell">{{ manager_record.start_date }}</p>
+
+        <div class="view_button_groupe">
+            <a href="{% url 'update_manager' manager_record.manager_id %}" class="btn btn-secondary">Update</a>
+
+            <a href="{% url 'managers' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock%}
