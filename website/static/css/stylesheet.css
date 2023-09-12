@@ -213,8 +213,17 @@
     font-size: 18px;
 }
 
+.nav-link {
+    width: 100%;
+}
 
+.nav-item {
+    width: 100%;
+}
 
+.navbar-nav {
+    width: 100%;
+}
 
 
 
@@ -413,7 +422,7 @@ th.fixed-width {
 
 /* Фиксированная ширина для последнего столбца */
 th.fixed-width:last-child {
-    width: 13em;
+    width: 10em;
     /* Задайте фиксированную ширину для последнего столбца */
 }
 

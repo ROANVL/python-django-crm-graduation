@@ -124,7 +124,7 @@ def delete_record(request, pk):
 
 @login_required
 def delete_company(request, pk):
-    delete_it = Companies.objects.get(id=pk)
+    delete_it = Companies.objects.get(company_id=pk)
     delete_it.delete()
     messages.success(request, "The record has been deleted successfully.")
     return redirect('companies')
@@ -132,7 +132,7 @@ def delete_company(request, pk):
 
 @login_required
 def delete_manager(request, pk):
-    delete_it = Managers.objects.get(id=pk)
+    delete_it = Managers.objects.get(manager_id=pk)
     delete_it.delete()
     messages.success(request, "The record has been deleted successfully.")
     return redirect('managers')

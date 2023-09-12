@@ -32,22 +32,25 @@
     text-decoration: none;
     color: #dcdad7;
     display: block;
+}
 
-    .sidenav_menu li a:hover {
-        background-color: #eee;
-        color: black;
-    }
+.sidenav_menu li a:hover {
+    background-color: #eee;
+    color: black;
+}
 
 
 
 
-    .main {
-        /* Styles for the main content */
-    }
+.main {
+    /* Styles for the main content */
+}
 
-    .footer {
-        grid-column: 1 / 3;
-    }
+.footer {
+    grid-column: 1 / 3;
+    /* Footer spans both columns */
+    /* Styles for the footer */
+}
 
 
 
@@ -60,53 +63,53 @@
 
 
 
-    /* СТИЛИЗАЦИЯ ФОРМЫ LOGIN */
-    /* Ограничиваем максимальную ширину формы и центрируем ее */
-    .login-form {
-        max-width: 30em;
-        margin: 0 auto;
-        margin-top: 10%;
-        margin-left: 35%;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border: 1px solid #ccc;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+/* СТИЛИЗАЦИЯ ФОРМЫ LOGIN */
+/* Ограничиваем максимальную ширину формы и центрируем ее */
+.login-form {
+    max-width: 30em;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-left: 35%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-    /* Стилизация текстовых полей ввода типа "text" и "password" */
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 0;
-        outline: none;
-    }
+/* Стилизация текстовых полей ввода типа "text" и "password" */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    outline: none;
+}
 
-    /* Стилизация фокуса на текстовых полях ввода */
-    .login-form input[type="text"]:focus,
-    .login-form input[type="password"]:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
+/* Стилизация фокуса на текстовых полях ввода */
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
 
-    /* Стилизация кнопки */
-    .login-form button {
-        width: 100%;
-        padding: 3%;
-        background-color: rgb(58, 63, 65) !important;
-        color: #fff;
-        border: none;
-        border-radius: 0;
-        cursor: pointer;
-    }
+/* Стилизация кнопки */
+.login-form button {
+    width: 100%;
+    padding: 3%;
+    background-color: rgb(58, 63, 65) !important;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
 
-    /* Стилизация кнопки при наведении */
-    .login-form button:hover {
-        background-color: #0056b3;
-        border-radius: 0;
-    }
+/* Стилизация кнопки при наведении */
+.login-form button:hover {
+    background-color: #0056b3;
+    border-radius: 0;
+}
 
 
 
@@ -116,64 +119,64 @@
 
 
 
-    /* СТИЛИЗАЦИЯ ФОРМЫ REGISTER */
-    /* Ограничиваем максимальную ширину формы и центрируем ее */
-    .register-form {
-        max-width: 30em;
-        margin: 0 auto;
-        margin-top: 10%;
-        margin-left: 35%;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border: 1px solid #ccc;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 0;
-    }
+/* СТИЛИЗАЦИЯ ФОРМЫ REGISTER */
+/* Ограничиваем максимальную ширину формы и центрируем ее */
+.register-form {
+    max-width: 30em;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-left: 35%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+}
 
-    /* Стилизация текстовых полей ввода типа "text" и "password" */
-    .register-form input[type="text"],
-    .register-form input[type="password"] {
-        width: 100%;
-        /* Занимать всю доступную ширину */
-        padding: 10px;
-        /* Внутренний отступ вокруг текста */
-        margin-bottom: 10px;
-        /* Отступ снизу */
-        border: 1px solid #ccc;
-        /* Граница */
-        border-radius: 0;
-        /* Скругленные углы */
-        outline: none;
-        /* Убираем стандартный контур при фокусе */
-        border-radius: 0;
-    }
+/* Стилизация текстовых полей ввода типа "text" и "password" */
+.register-form input[type="text"],
+.register-form input[type="password"] {
+    width: 100%;
+    /* Занимать всю доступную ширину */
+    padding: 10px;
+    /* Внутренний отступ вокруг текста */
+    margin-bottom: 10px;
+    /* Отступ снизу */
+    border: 1px solid #ccc;
+    /* Граница */
+    border-radius: 0;
+    /* Скругленные углы */
+    outline: none;
+    /* Убираем стандартный контур при фокусе */
+    border-radius: 0;
+}
 
-    /* Стилизация фокуса на текстовых полях ввода */
-    .register-form input[type="text"]:focus,
-    .register-form input[type="password"]:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+/* Стилизация фокуса на текстовых полях ввода */
+.register-form input[type="text"]:focus,
+.register-form input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 
-    }
+}
 
-    /* Стилизация кнопки */
-    .register-form button {
-        width: 100%;
-        padding: 3%;
-        margin: 1%;
-        background-color: rgb(58, 63, 65) !important;
-        color: #fff;
-        border: none;
-        border-radius: 0;
-        cursor: pointer;
-        border-radius: 0;
-    }
+/* Стилизация кнопки */
+.register-form button {
+    width: 100%;
+    padding: 3%;
+    margin: 1%;
+    background-color: rgb(58, 63, 65) !important;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    border-radius: 0;
+}
 
-    /* Стилизация кнопки при наведении */
-    .register-form button:hover {
-        background-color: #0056b3;
-        border-radius: 0;
-    }
+/* Стилизация кнопки при наведении */
+.register-form button:hover {
+    background-color: #0056b3;
+    border-radius: 0;
+}
 
 
 
@@ -183,35 +186,44 @@
 
 
 
-    /* СТИЛИЗАЦИЯ КНОПКИ LOGIN / REGISTER / LOGOUT */
-    .navbar-collapse {
-        /* Отключаем возможность растягивания элемента */
-        flex-grow: 0;
-        /* Создаем контейнер с горизонтальным выравниванием по центру */
-        display: flex;
-        justify-content: center;
-        /* Выравниваем содержимое по вертикали по центру */
-        align-items: center;
-        /* Устанавливаем белую границу толщиной 1px */
-        border: 1px solid white;
-        /* Устанавливаем ширину элемента на 7% от родительского контейнера */
-        width: 7%;
-        /* Убираем внутренние отступы внутри элемента */
-        padding: 0;
-        /* Ограничиваем размеры содержимого элемента */
-        overflow: hidden;
-        /* Запрещаем перенос текста на новую строку */
-        white-space: nowrap;
-        /* Если текст слишком длинный, добавляем многоточие */
-        text-overflow: ellipsis;
-        /* Выравниваем текст по центру по горизонтали */
-        text-align: center;
-        /* Устанавливаем размер шрифта (замените XXpx на желаемый размер) */
-        font-size: 18px;
-    }
+/* СТИЛИЗАЦИЯ КНОПКИ LOGIN / REGISTER / LOGOUT */
+.navbar-collapse {
+    /* Отключаем возможность растягивания элемента */
+    flex-grow: 0;
+    /* Создаем контейнер с горизонтальным выравниванием по центру */
+    display: flex;
+    justify-content: center;
+    /* Выравниваем содержимое по вертикали по центру */
+    align-items: center;
+    /* Устанавливаем белую границу толщиной 1px */
+    border: 1px solid white;
+    /* Устанавливаем ширину элемента на 7% от родительского контейнера */
+    width: 7%;
+    /* Убираем внутренние отступы внутри элемента */
+    padding: 0;
+    /* Ограничиваем размеры содержимого элемента */
+    overflow: hidden;
+    /* Запрещаем перенос текста на новую строку */
+    white-space: nowrap;
+    /* Если текст слишком длинный, добавляем многоточие */
+    text-overflow: ellipsis;
+    /* Выравниваем текст по центру по горизонтали */
+    text-align: center;
+    /* Устанавливаем размер шрифта (замените XXpx на желаемый размер) */
+    font-size: 18px;
+}
 
+.nav-link {
+    width: 100%;
+}
 
+.nav-item {
+    width: 100%;
+}
 
+.navbar-nav {
+    width: 100%;
+}
 
 
 
@@ -228,73 +240,74 @@
 
 
 
-    /* СТИЛИЗАЦИЯ ТАБЛИЦЫ */
+/* СТИЛИЗАЦИЯ ТАБЛИЦЫ */
 
-    /* ПОИСКОВАЯ СТРОКА */
-    .search_by_name {
-        width: 100%;
-        height: 15px;
-        margin-bottom: 10px;
-        background-color: white;
+/* ПОИСКОВАЯ СТРОКА */
+.search_by_name {
+    width: 100%;
+    height: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    color: black;
 
 
-    }
+}
 
-    .filter_by {
-        width: 100%;
-        height: 25px;
-        margin-bottom: 9px;
-        color: black;
-        font-style: italic;
-        font-size: 18px;
-        background-color: white;
+.filter_by {
+    width: 100%;
+    height: 25px;
+    margin-bottom: 9px;
+    color: black;
+    font-style: italic;
+    font-size: 18px;
+    background-color: white;
 
-    }
+}
 
-    /* Поисковая строкаю Стилизация placeholder */
-    ::placeholder {
-        color: black;
-        font-style: italic;
-    }
+/* Поисковая строкаю Стилизация placeholder */
+::placeholder {
+    color: black;
+    font-style: italic;
+}
 
-    /* Поисковая строка. Стилизация введенного текста */
-    input[type="text"] {
-        padding: 10px;
-        font-size: 18px;
-        border: 1px solid #ccc;
-    }
+/* Поисковая строка. Стилизация введенного текста */
+input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+}
 
-    /* Стилизация шапки таблицы */
-    .table-dark {
-        margin: 10px;
-        text-align: center;
-        max-width: 100%;
+/* Стилизация шапки таблицы */
+.table-dark {
+    margin: 10px;
+    text-align: center;
+    max-width: 100%;
 
-    }
+}
 
-    /* Стилизация пагинации */
-    .pagination {
-        margin: 0.5em;
-    }
+/* Стилизация пагинации */
+.pagination {
+    margin: 0.5em;
+}
 
-    .pagination_prev_next {
-        border: 1px solid red;
-        margin: 5px;
+.pagination_prev_next {
+    border: 1px solid red;
+    margin: 5px;
 
-    }
+}
 
-    .rows-per-page {
-        border: 1px solid red;
-        margin: 5px;
-        font-style: italic;
-        font-size: 18px;
-        text-align: right !important;
-    }
+.rows-per-page {
+    border: 1px solid red;
+    margin: 5px;
+    font-style: italic;
+    font-size: 18px;
+    text-align: right !important;
+}
 
 
-    #rowsPerPage {
-        margin: 0.5em;
-    }
+#rowsPerPage {
+    margin: 0.5em;
+}
 
 
 
@@ -304,71 +317,71 @@
 
 
 
-    /* СТИЛИЗАЦИЯ КАРТОЧЕК */
-    /* Стилизация формы add */
-    .add_record_form {
-        width: 50%;
-        margin: 0 auto;
-        margin-top: 10%;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border: 1px solid #ccc;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+/* СТИЛИЗАЦИЯ КАРТОЧЕК */
+/* Стилизация формы add */
+.add_record_form {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-    /* Стилизация формы add */
-    .update_record_form {
-        width: 50%;
-        margin: 0 auto;
-        margin-top: 10%;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border: 1px solid #ccc;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+/* Стилизация формы add */
+.update_record_form {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-    /* Стилизация формы карточки записи */
-    .record_card {
-        width: 50%;
-        margin: 0 auto;
-        margin-top: 10%;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border: 1px solid #ccc;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+/* Стилизация формы карточки записи */
+.record_card {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
 
-    .record_card-text {
-        margin-bottom: 5px;
-        /* Добавляет небольшие отступы между текстовыми блоками */
-    }
+.record_card-text {
+    margin-bottom: 5px;
+    /* Добавляет небольшие отступы между текстовыми блоками */
+}
 
-    .white-cell {
-        background-color: white;
-        padding: 5px;
-        border: 1px solid #ccc;
-    }
+.white-cell {
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
 
-    .view_button_groupe {
-        padding-top: 20px;
-    }
+.view_button_groupe {
+    padding-top: 20px;
+}
 
 
-    .btn {
-        width: 100%;
-        border-radius: 0;
-        background-color: rgb(58, 63, 65);
-    }
+.btn {
+    width: 100%;
+    border-radius: 0;
+    background-color: rgb(58, 63, 65);
+}
 
-    .form-group .btn {
-        margin-bottom: 10px;
-        /* Добавляем правый отступ между элементами */
-    }
+.form-group .btn {
+    margin-bottom: 10px;
+    /* Добавляем правый отступ между элементами */
+}
 
-    .dropdown-menu {
-        width: 100%;
-    }
+.dropdown-menu {
+    width: 100%;
+}
 
 
 
@@ -382,39 +395,39 @@
 
 
 
-    .add_btn {
-        border: 1px solid red;
-        margin: 5px;
-    }
+.add_btn {
+    border: 1px solid red;
+    margin: 5px;
+}
 
-    .content {
-        max-width: 100%;
-    }
+.content {
+    max-width: 100%;
+}
 
-    .table {
-        border: 1px solid red;
-        margin: 5px;
-        max-width: 100%;
-        text-align: left;
+.table {
+    border: 1px solid red;
+    margin: 5px;
+    max-width: 100%;
+    text-align: left;
 
 
-    }
+}
 
 
 
-    th.fixed-width {
-        width: auto;
-        /* Установите желаемую фиксированную ширину для предпоследнего и последнего столбца */
-    }
+th.fixed-width {
+    width: auto;
+    /* Установите желаемую фиксированную ширину для предпоследнего и последнего столбца */
+}
 
-    /* Фиксированная ширина для последнего столбца */
-    th.fixed-width:last-child {
-        width: 13em;
-        /* Задайте фиксированную ширину для последнего столбца */
-    }
+/* Фиксированная ширина для последнего столбца */
+th.fixed-width:last-child {
+    width: 10em;
+    /* Задайте фиксированную ширину для последнего столбца */
+}
 
-    /* Фиксированная ширина для предпоследнего столбца */
-    th.fixed-width:nth-last-child(2) {
-        width: 13em;
-        /* Задайте фиксированную ширину для предпоследнего столбца */
-    }
+/* Фиксированная ширина для предпоследнего столбца */
+th.fixed-width:nth-last-child(2) {
+    width: 13em;
+    /* Задайте фиксированную ширину для предпоследнего столбца */
+}
