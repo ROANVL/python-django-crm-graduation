@@ -7,118 +7,109 @@
 {% if user.is_authenticated %}
 
 
-
-
-<div class="flex-box">
-
-{%include 'sidenav.html' %}
-
-
-    <div class="content_btn_table">
-
-        <div class="add_btn  mb-3 text-end">
-            <a href="{% url 'add_record' %}" class="btn btn-secondary">Add record</a> <!-- btn
-                            btn-success - green -->
-        </div>
-
-           
-        <div class="add_btn  mb-3 text-end">
-            <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">First name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Company</th>
-                        <th scope="col">Job Title</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Social_media</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                    <tr>
-                        <th scope="col" colspan="9"><input class="search_by_name" type="text" oninput="myFunction()"
-                                placeholder="Search by..."></th>
-                        <th><select class="filter_by" onchange="myFunction()">
-                                <option value="0">First name</option>
-                                <option value="1">Last name</option>
-                                <option value="2">Company</option>
-                                <option value="3">Job Title</option>
-                                <option value="4">Phone</option>
-                                <option value="5">Email</option>
-                                <option value="6">Social_media</option>
-                                <option value="7">Description</option>
-                                <option value="8">Created At</option>
-                            </select>
-                        </th>
-                    </tr>
-                </thead>
-
-
-                <tbody>
-
-                    {% if records %}
-                    {% for record in records %}
-                    <tr>
-                        <td>{{ record.first_name }}</td>
-                        <td>{{ record.last_name }}</td> 
-                        <td>{{ record.company }}</td>
-                        <td>{{ record.job_title }}</td>
-                        <td>{{ record.phone }}</td>
-                        <td>{{ record.email }}</td>
-                        <td>{{ record.social_media }}</td>
-                        <td>{{ record.description }}</td>
-                        <td>{{ record.created_at }}</td>
-                        <td id="td_actions">
-                            <div class="button_groupe">
-                                <a href="{% url 'record' record.contact_id %}" class="btn btn-secondary">View</a>
-                                <a href="{% url 'update_record' record.contact_id %}" class="btn btn-secondary">Edit</a> <!-- btn
-                                btn-primary - blue -->
-                                <a href="{% url 'delete_record' record.contact_id %}" class="btn btn-secondary">Del</a> <!-- btn
-                                btn-danger - red --></td>
-                        </div>
-                    </tr>
-                    {% endfor %}
-
-                    {% endif %}
-
-
-                </tbody>
-            </table>
-
-        </div>
-        
-
-
-
-        <!-- Выпадающий список для выбора количества строк на странице -->
-        <div class="rows-per-page">
-            <label for="rowsPerPage">Rows per page:</label>
-            <select id="rowsPerPage" onchange="changeRowsPerPage()">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-            </select>
-        </div>
-
-
-
-        <div class="pagination_prev_next">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end" id="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" onclick="changePage('prev')">Previous</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-
-
-
-    </div>
+<div class="add_btn  mb-3 text-end">
+    <a href="{% url 'add_record' %}" class="btn btn-secondary">Add contact</a>
 </div>
+
+<table id="myTable" class="table table-striped table-hover table-bordered table-sm">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col" class="fixed-width">First name</th>
+            <th scope="col" class="fixed-width">Last name</th>
+            <th scope="col" class="fixed-width">Company</th>
+            <th scope="col" class="fixed-width">Job Title</th>
+            <th scope="col" class="fixed-width">Phone</th>
+            <th scope="col" class="fixed-width">Email</th>
+            <th scope="col" class="fixed-width">Social_media</th>
+            <th scope="col" class="fixed-width">Description</th>
+            <th scope="col" class="fixed-width">Created At</th>
+            <th scope="col" class="fixed-width">Actions</th>
+        </tr>
+        <tr>
+            <th scope="col" colspan="9"><input class="search_by_name" type="text" oninput="myFunction()"
+                    placeholder="Search by..."></th>
+            <th><select class="filter_by" onchange="myFunction()">
+                    <option value="0">First name</option>
+                    <option value="1">Last name</option>
+                    <option value="2">Company</option>
+                    <option value="3">Job Title</option>
+                    <option value="4">Phone</option>
+                    <option value="5">Email</option>
+                    <option value="6">Social_media</option>
+                    <option value="7">Description</option>
+                    <option value="8">Created At</option>
+                </select>
+            </th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        {% if records %}
+        {% for record in records %}
+
+        <tr>
+            <td>{{ record.first_name }}</td>
+            <td>{{ record.last_name }}</td> 
+            <td>{{ record.company }}</td>
+            <td>{{ record.job_title }}</td>
+            <td>{{ record.phone }}</td>
+            <td>{{ record.email }}</td>
+            <td>{{ record.social_media }}</td>
+            <td>{{ record.description }}</td>
+            <td>{{ record.created_at }}</td>
+            <td id="td_actions">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Action
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'record' record.contact_id %}">View</a></li>
+                        <li><a class="dropdown-item" href="{% url 'update_record' record.contact_id %}">Edit</a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete_record' record.contact_id %}">Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+        {% endif %}
+
+
+    </tbody>
+</table>
+
+
+
+
+<div class="rows-per-page">
+    <label for="rowsPerPage">Rows per page:</label>
+    <select id="rowsPerPage" onchange="changeRowsPerPage()">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+    </select>
+</div>
+
+
+
+<div class="pagination_prev_next">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end" id="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" onclick="changePage('prev')">Previous</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+
+
+
+
 
 {% else %}
 
@@ -143,6 +134,6 @@
 
 
 
-    {% endif %}
+{% endif %}
 
-    {% endblock %}
+{% endblock %}

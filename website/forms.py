@@ -65,7 +65,7 @@ class AddRecordForm(forms.ModelForm):
             "company": forms.Select(attrs={"class": "form-control"}),
             "description": forms.Textarea(attrs={"class": "form-control", "placeholder": "Description"}),
             "social_media": forms.URLInput(attrs={"class": "form-control", "placeholder": "Social Media URL"}),
-            "date_of_birth": forms.DateInput(attrs={"class": "form-control", "placeholder": "Date of Birth"}),
+            "date_of_birth": forms.DateInput(attrs={"class": "form-control", "placeholder": "2020-01-02"}),
         }
 
     def __init__(self, *args, **kwargs):

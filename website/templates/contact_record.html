@@ -12,7 +12,7 @@
         <p class="white-cell"> {{ contact_record.last_name }}</p>
 
         <strong>Job Title: </strong>
-        <p class="white-cell">{{ contact_record.title }}</p>
+        <p class="white-cell">{{ contact_record.job_title }}</p>
 
         <strong>Phone: </strong>
         <p class="white-cell">{{ contact_record.phone }}</p>
@@ -29,17 +29,13 @@
         <strong>Date of Birth: </strong>
         <p class="white-cell">{{ contact_record.date_of_birth }}</p>
 
-        <div class="view_button_groupe">
+        
+
+        <div class="form-group">
             <a href="{% url 'update_record' contact_record.contact_id %}" class="btn btn-secondary">Update</a>
-
-
-
-
-
-
-            
             <a href="{% url 'contacts' %}" class="btn btn-secondary">Back</a>
         </div>
+
     </div>
 </div>
 

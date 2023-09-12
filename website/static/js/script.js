@@ -99,5 +99,3 @@ function updatePageNumbers() {
 displayPage(); // Инициализация при загрузке страницы
 updatePageNumbers(); // Обновляем номера страниц при инициализации
 
-
-

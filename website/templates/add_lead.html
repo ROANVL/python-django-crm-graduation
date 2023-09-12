@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-    
     <form method="POST" action="{% url 'add_lead' %}" class="add_record_form">
         {% csrf_token %}
         <h1>Add Lead</h1>
         {{ form.as_p }}
 
-
-        <button type="submit" class="btn btn-secondary">Add Lead</button>   <!-- btn btn-success   green-->
-        <a href="{% url 'leads' %}" class="btn btn-secondary">Back</a>
+        <div class="form-group">
+            <button type="submit" class="btn btn-secondary">Add Lead</button>   <!-- btn btn-success   green-->
+            <a href="{% url 'leads' %}" class="btn btn-secondary">Back</a>
+        </div>
     </form>
 </div>
+
 
 {% endblock %}

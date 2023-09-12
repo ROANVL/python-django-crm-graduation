@@ -2,17 +2,17 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-    
     <form method="POST" class="update_record_form">
         {% csrf_token %}
         <h1>Update Contact</h1>
         {{ form.as_p }}
 
-        <button type="submit" class="btn btn-secondary">Save</button>  <!-- btn btn-success   green-->
-        <a href="{% url 'contacts' %}" class="btn btn-secondary">Back</a>
-
+        <div class="form-group">
+            <button type="submit" class="btn btn-secondary">Save</button>  <!-- btn btn-success   green-->
+            <a href="{% url 'contacts' %}" class="btn btn-secondary">Back</a>
+        </div>
     </form>
-
 </div>
+
 
 {% endblock %}

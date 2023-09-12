@@ -5,7 +5,6 @@ class Managers(models.Model):
     manager_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    # Дефолтное значение пустой строки
     phone = models.CharField(max_length=20, default='')
     email = models.EmailField()
     job_title = models.CharField(max_length=100, default='')
@@ -64,8 +63,6 @@ class Orders(models.Model):
     order_amount = models.DecimalField(max_digits=10, decimal_places=2)
     company = models.ForeignKey(Companies, on_delete=models.CASCADE)
     manager = models.ForeignKey('Managers', on_delete=models.CASCADE)
-
-    # Дефолтное значение пустой строки
     order_status = models.CharField(
         max_length=50, null=True, blank=True, default='')
     order_description = models.TextField(null=True, blank=True)
@@ -79,12 +76,10 @@ class Leads(models.Model):
     lead_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    # Дефолтное значение пустой строки
     phone = models.CharField(max_length=20, default='')
     email = models.EmailField()
     creation_date = models.DateField()
     status = models.CharField(max_length=50)
-
     lead_source = models.CharField(
         max_length=100, null=True, blank=True, default=None)  # Дефолтное значение None
     lead_description = models.TextField(null=True, blank=True)

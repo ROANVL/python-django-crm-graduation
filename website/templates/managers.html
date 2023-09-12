@@ -7,106 +7,100 @@
 {% if user.is_authenticated %}
 
 
+<div class="add_btn  mb-3 text-end">
+    <a href="{% url 'add_manager' %}" class="btn btn-secondary">Add manager</a> 
+</div>
+
+<table id="myTable" class="table table-striped table-hover table-bordered table-sm">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col" class="fixed-width">First name</th>
+            <th scope="col" class="fixed-width">Last name</th>
+            <th scope="col" class="fixed-width">Phone</th>
+            <th scope="col" class="fixed-width">Email</th>
+            <th scope="col" class="fixed-width">Job title</th>
+            <th scope="col" class="fixed-width">Departament</th>
+            <th scope="col" class="fixed-width">Start Date</th>
+            <th scope="col" class="fixed-width">Actions</th>
+        </tr>
+        <tr>
+            <th scope="col" colspan="7"><input class="search_by_name" type="text" oninput="myFunction()"
+                    placeholder="Search by..."></th>
+            <th><select class="filter_by" onchange="myFunction()">
+                    <option value="0">First name</option>
+                    <option value="1">Last name</option>
+                    <option value="2">Phone</option>
+                    <option value="3">Email</option>
+                    <option value="4">Job title</option>
+                    <option value="5">Departament</option>
+                    <option value="6">Start Date</option>
+                </select>
+            </th>
+        </tr>
+    </thead>
 
 
-<div class="flex-box">
+    <tbody>
 
-{%include 'sidenav.html' %}
+        {% if managers_records %}
+        {% for manager_record in managers_records %}
 
+        <tr>
+            <td>{{ manager_record.first_name }}</td>
+            <td>{{ manager_record.last_name }}</td> 
+            <td>{{ manager_record.phone }}</td>
+            <td>{{ manager_record.email }}</td>
+            <td>{{ manager_record.job_title }}</td>
+            <td>{{ manager_record.department }}</td>
+            <td>{{ manager_record.start_date }}</td>
+            <td id="td_actions">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Action
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'manager_record' manager_record.manager_id %}">View</a></li>
+                        <li><a class="dropdown-item" href="{% url 'update_manager' manager_record.manager_id %}">Edit</a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete_manager' manager_record.manager_id %}">Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
 
-    <div class="content_btn_table">
+        {% endfor %}
 
-        <div class="add_btn  mb-3 text-end">
-            <a href="{% url 'add_manager' %}" class="btn btn-secondary">Add manager</a> <!-- btn
-                            btn-success - green -->
-        </div>
-
-           
-        <div class="add_btn  mb-3 text-end">
-            <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">First name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Job title</th>
-                        <th scope="col">Departament</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                    <tr>
-                        <th scope="col" colspan="7"><input class="search_by_name" type="text" oninput="myFunction()"
-                                placeholder="Search by..."></th>
-                        <th><select class="filter_by" onchange="myFunction()">
-                                <option value="0">First name</option>
-                                <option value="1">Last name</option>
-                                <option value="2">Phone</option>
-                                <option value="3">Email</option>
-                                <option value="4">Job title</option>
-                                <option value="5">Departament</option>
-                                <option value="6">Start Date</option>
-                            </select>
-                        </th>
-                    </tr>
-                </thead>
+        {% endif %}
 
 
-                <tbody>
-
-                    {% if managers_records %}
-                    {% for manager_record in managers_records %}
-                    <tr>
-                        <td>{{ manager_record.first_name }}</td>
-                        <td>{{ manager_record.last_name }}</td> 
-                        <td>{{ manager_record.phone }}</td>
-                        <td>{{ manager_record.email }}</td>
-                        <td>{{ manager_record.job_title }}</td>
-                        <td>{{ manager_record.department }}</td>
-                        <td>{{ manager_record.start_date }}</td>
-                        <td id="td_actions">
-                            <div class="button_groupe">
-                                <a href="{% url 'manager_record' manager_record.manager_id %}" class="btn btn-secondary">View</a>
-                                <a href="{% url 'update_manager' manager_record.manager_id %}" class="btn btn-secondary">Edit</a> <!-- btn
-                                btn-primary - blue -->
-                                <a href="{% url 'delete_manager' manager_record.manager_id %}" class="btn btn-secondary">Del</a> <!-- btn
-                                btn-danger - red --></td>
-                        </div>
-                    </tr>
-                    {% endfor %}
-
-                    {% endif %}
+    </tbody>
+</table>
 
 
-                </tbody>
-            </table>
-
-        </div>
         
 
 
 
         <!-- Выпадающий список для выбора количества строк на странице -->
-        <div class="rows-per-page">
-            <label for="rowsPerPage">Rows per page:</label>
-            <select id="rowsPerPage" onchange="changeRowsPerPage()">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-            </select>
-        </div>
+<div class="rows-per-page">
+    <label for="rowsPerPage">Rows per page:</label>
+    <select id="rowsPerPage" onchange="changeRowsPerPage()">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+    </select>
+</div>
 
 
 
-        <div class="pagination_prev_next">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end" id="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" onclick="changePage('prev')">Previous</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+<div class="pagination_prev_next">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end" id="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" onclick="changePage('prev')">Previous</a>
+            </li>
+        </ul>
+    </nav>
+</div>
 
 
 
