@@ -4,6 +4,10 @@ from django.contrib import messages
 from .login_decorator import login_required
 from .forms import SignUpForm, AddRecordForm, AddCompanyForm, AddManagerForm, AddOrderForm, AddLeadForm
 from .models import Contacts, Managers, Companies, Orders, Leads
+from django.db.models import Sum, F
+from django.http import HttpResponse
+import io
+import matplotlib.pyplot as plt
 
 
 def logout_user(request):
@@ -274,3 +278,48 @@ def update_lead(request, pk):
             request, "The lead has been successfully updated!")
         return redirect("leads")
     return render(request, "update_lead.html", {"form": form})
+
+
+# REPORSTS
+def sales_report_by_managers(request):
+    managers_sales = Managers.objects.annotate(
+        total_sales=Sum('orders__order_amount'),
+        job_title_name=F('job_title__title'),
+        department_name=F('department__name')
+    )
+
+    context = {
+        'managers_sales': managers_sales,
+    }
+
+    return render(request, 'sales_report_by_managers.html', context)
+
+
+def sales_report_chart(request):
+    managers_sales = Managers.objects.annotate(
+        total_sales=Sum('orders__order_amount'),
+        job_title_name=F('job_title__title'),
+        department_name=F('department__name')
+    )
+
+    data_names = [
+        f"{manager.first_name} {manager.last_name}" for manager in managers_sales]
+    data_values = [
+        manager.total_sales if manager.total_sales else 0 for manager in managers_sales]
+
+    plt.figure(figsize=(12, 8), dpi=80)  # Увеличили размер и DPI
+    plt.bar(data_names, data_values)
+    plt.xlabel('Managers')
+    plt.ylabel('Total Sales')
+    plt.title('Sales Report by Managers')
+    plt.xticks(rotation=45)
+    plt.tight_layout()  # Добавили эту строку для более компактного отображения
+
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+
+    plt.clf()
+
+    response = HttpResponse(buffer.getvalue(), content_type='image/png')
+    return response

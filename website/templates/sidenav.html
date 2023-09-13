@@ -1,11 +1,26 @@
-    <!-- Side navigation -->
-    <div class="sidenav">
-        <ul class="sidenav_menu">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'contacts' %}">Contacts</a></li>
-            <li><a href="{% url 'companies' %}">Companies</a></li>
-            <li><a href="{% url 'managers' %}">Managers</a></li>
-            <li><a href="{% url 'orders' %}">Orders</a></li>
-            <li><a href="{% url 'leads' %}">Leads</a></li>
-        </ul>
-    </div>
+<!-- Ваш HTML-код для меню боковой навигации (sidenav) -->
+<div class="sidenav">
+    <ul class="sidenav_menu">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'contacts' %}">Contacts</a></li>
+        <li><a href="{% url 'companies' %}">Companies</a></li>
+        <li><a href="{% url 'managers' %}">Managers</a></li>
+        <li><a href="{% url 'orders' %}">Orders</a></li>
+        <li><a href="{% url 'leads' %}">Leads</a></li>
+        
+        
+        <li>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">    
+                    Reports
+                </button>
+                <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-start">
+                    <li><a class="dropdown-item" href="{% url 'sales_report_by_managers' %}">Sales Report by Managers</a></li>
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+    

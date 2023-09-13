@@ -42,8 +42,19 @@
 
 
 
+
+
+
 .main {
-    /* Styles for the main content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Выравнивание по центру по горизонтали */
+    justify-content: flex-start;
+    /* Выравнивание по верхнему краю по вертикали */
+    gap: 1px;
+    /* Отступ между элементами */
+    /* Другие стили, если необходимо */
 }
 
 .footer {
@@ -124,7 +135,7 @@
 .register-form {
     max-width: 30em;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 35%;
     background-color: #f0f0f0;
     padding: 20px;
@@ -279,35 +290,35 @@ input[type="text"] {
 
 /* Стилизация шапки таблицы */
 .table-dark {
-    margin: 10px;
     text-align: center;
     max-width: 100%;
 
 }
 
-/* Стилизация пагинации */
-.pagination {
-    margin: 0.5em;
+.main th {
+    background-color: rgb(58, 63, 65)
 }
+
+/* Стилизация пагинации */
+.pagination {}
 
 .pagination_prev_next {
     border: 1px solid red;
-    margin: 5px;
+    margin-left: auto;
+    height: 3em;
 
 }
 
 .rows-per-page {
     border: 1px solid red;
-    margin: 5px;
     font-style: italic;
-    font-size: 18px;
+    font-size: 16px;
     text-align: right !important;
+    margin-left: auto;
 }
 
 
-#rowsPerPage {
-    margin: 0.5em;
-}
+#rowsPerPage {}
 
 
 
@@ -321,7 +332,6 @@ input[type="text"] {
 /* Стилизация формы add */
 .add_record_form {
     width: 50%;
-    margin: 0 auto;
     margin-top: 10%;
     background-color: #f0f0f0;
     padding: 20px;
@@ -332,7 +342,6 @@ input[type="text"] {
 /* Стилизация формы add */
 .update_record_form {
     width: 50%;
-    margin: 0 auto;
     margin-top: 10%;
     background-color: #f0f0f0;
     padding: 20px;
@@ -343,7 +352,6 @@ input[type="text"] {
 /* Стилизация формы карточки записи */
 .record_card {
     width: 50%;
-    margin: 0 auto;
     margin-top: 10%;
     background-color: #f0f0f0;
     padding: 20px;
@@ -397,7 +405,7 @@ input[type="text"] {
 
 .add_btn {
     border: 1px solid red;
-    margin: 5px;
+    margin-left: auto;
 }
 
 .content {
@@ -406,7 +414,6 @@ input[type="text"] {
 
 .table {
     border: 1px solid red;
-    margin: 5px;
     max-width: 100%;
     text-align: left;
 
@@ -430,4 +437,37 @@ th.fixed-width:last-child {
 th.fixed-width:nth-last-child(2) {
     width: 13em;
     /* Задайте фиксированную ширину для предпоследнего столбца */
+}
+
+
+
+
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }

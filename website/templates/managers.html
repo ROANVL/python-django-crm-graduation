@@ -14,24 +14,22 @@
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
     <thead class="table-dark">
         <tr>
-            <th scope="col" class="fixed-width">First name</th>
-            <th scope="col" class="fixed-width">Last name</th>
-            <th scope="col" class="fixed-width">Phone</th>
-            <th scope="col" class="fixed-width">Email</th>
-            <th scope="col" class="fixed-width">Job title</th>
-            <th scope="col" class="fixed-width">Department</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Job title</th>
+            <th scope="col">Department</th>
             <th scope="col" class="fixed-width">Actions</th>
         </tr>
         <tr>
-            <th scope="col" colspan="6"><input class="search_by_name" type="text" oninput="myFunction()"
+            <th scope="col" colspan="5"><input class="search_by_name" type="text" oninput="myFunction()"
                     placeholder="Search by..."></th>
             <th><select class="filter_by" onchange="myFunction()">
-                    <option value="0">First name</option>
-                    <option value="1">Last name</option>
-                    <option value="2">Phone</option>
-                    <option value="3">Email</option>
-                    <option value="4">Job title</option>
-                    <option value="5">Department</option>
+                    <option value="0">Full Name</option>
+                    <option value="1">Phone</option>
+                    <option value="2">Email</option>
+                    <option value="3">Job title</option>
+                    <option value="4">Department</option>
                 </select>
             </th>
         </tr>
@@ -44,8 +42,7 @@
         {% for manager_record in managers_records %}
 
         <tr>
-            <td>{{ manager_record.first_name }}</td>
-            <td>{{ manager_record.last_name }}</td> 
+            <td>{{ manager_record.first_name }} {{ manager_record.last_name }}</td>
             <td>{{ manager_record.phone }}</td>
             <td>{{ manager_record.email }}</td>
             <td>{{ manager_record.job_title }}</td>

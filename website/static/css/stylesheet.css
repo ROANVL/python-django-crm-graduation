@@ -42,6 +42,9 @@
 
 
 
+
+
+
 .main {
     display: flex;
     flex-direction: column;
@@ -434,4 +437,22 @@ th.fixed-width:last-child {
 th.fixed-width:nth-last-child(2) {
     width: 13em;
     /* Задайте фиксированную ширину для предпоследнего столбца */
+}
+
+.accordion {
+    width: 100%;
+}
+
+.chart-container {
+    width: 100%;
+}
+
+img {
+    display: block;
+    /* Делаем изображение блочным элементом */
+    margin: 0 auto;
+    /* Устанавливаем автоматичесные отступы слева и справа, чтобы изображение было по центру */
+    width: 50%;
+    height: auto;
+    /* Это, чтобы соотношение сторон сохранялось */
 }
