@@ -20,11 +20,9 @@
         <strong>Job Title: </strong>
         <p class="white-cell">{{ manager_record.job_title }}</p>
 
-        <strong>Departament: </strong>
-        <p class="white-cell">{{ manager_record.departament }}</p>
+        <strong>Department: </strong>
+        <p class="white-cell">{{ manager_record.department }}</p>
 
-        <strong>Start Date: </strong>
-        <p class="white-cell">{{ manager_record.start_date }}</p>
 
         <div class="form-group">
             <a href="{% url 'update_manager' manager_record.manager_id %}" class="btn btn-secondary">Update</a>

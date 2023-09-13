@@ -104,13 +104,13 @@ def manager_record(request, pk):
 
 @login_required
 def order_record(request, pk):
-    order_record = Orders.objects.get(id=pk)
+    order_record = Orders.objects.get(order_id=pk)
     return render(request, 'order_record.html', {'order_record': order_record})
 
 
 @login_required
 def lead_record(request, pk):
-    lead_record = Leads.objects.get(id=pk)
+    lead_record = Leads.objects.get(lead_id=pk)
     return render(request, 'lead_record.html', {'lead_record': lead_record})
 
 
@@ -140,7 +140,7 @@ def delete_manager(request, pk):
 
 @login_required
 def delete_order(request, pk):
-    delete_it = Orders.objects.get(id=pk)
+    delete_it = Orders.objects.get(order_id=pk)
     delete_it.delete()
     messages.success(request, "The order has been deleted successfully.")
     return redirect('orders')
@@ -148,7 +148,7 @@ def delete_order(request, pk):
 
 @login_required
 def delete_lead(request, pk):
-    delete_it = Leads.objects.get(id=pk)
+    delete_it = Leads.objects.get(lead_id=pk)
     delete_it.delete()
     messages.success(request, "The lead has been deleted successfully.")
     return redirect('leads')
@@ -254,7 +254,7 @@ def update_manager(request, pk):
 
 @login_required
 def update_order(request, pk):
-    current_record = Orders.objects.get(id=pk)
+    current_record = Orders.objects.get(order_id=pk)
     form = AddOrderForm(request.POST or None, instance=current_record)
     if form.is_valid():
         form.save()
@@ -266,7 +266,7 @@ def update_order(request, pk):
 
 @login_required
 def update_lead(request, pk):
-    current_record = Leads.objects.get(id=pk)
+    current_record = Leads.objects.get(lead_id=pk)
     form = AddLeadForm(request.POST or None, instance=current_record)
     if form.is_valid():
         form.save()

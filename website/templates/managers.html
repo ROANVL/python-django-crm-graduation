@@ -19,12 +19,11 @@
             <th scope="col" class="fixed-width">Phone</th>
             <th scope="col" class="fixed-width">Email</th>
             <th scope="col" class="fixed-width">Job title</th>
-            <th scope="col" class="fixed-width">Departament</th>
-            <th scope="col" class="fixed-width">Start Date</th>
+            <th scope="col" class="fixed-width">Department</th>
             <th scope="col" class="fixed-width">Actions</th>
         </tr>
         <tr>
-            <th scope="col" colspan="7"><input class="search_by_name" type="text" oninput="myFunction()"
+            <th scope="col" colspan="6"><input class="search_by_name" type="text" oninput="myFunction()"
                     placeholder="Search by..."></th>
             <th><select class="filter_by" onchange="myFunction()">
                     <option value="0">First name</option>
@@ -32,8 +31,7 @@
                     <option value="2">Phone</option>
                     <option value="3">Email</option>
                     <option value="4">Job title</option>
-                    <option value="5">Departament</option>
-                    <option value="6">Start Date</option>
+                    <option value="5">Department</option>
                 </select>
             </th>
         </tr>
@@ -52,7 +50,6 @@
             <td>{{ manager_record.email }}</td>
             <td>{{ manager_record.job_title }}</td>
             <td>{{ manager_record.department }}</td>
-            <td>{{ manager_record.start_date }}</td>
             <td id="td_actions">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

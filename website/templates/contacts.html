@@ -20,13 +20,12 @@
             <th scope="col" class="fixed-width">Job Title</th>
             <th scope="col" class="fixed-width">Phone</th>
             <th scope="col" class="fixed-width">Email</th>
-            <th scope="col" class="fixed-width">Social_media</th>
             <th scope="col" class="fixed-width">Description</th>
             <th scope="col" class="fixed-width">Created At</th>
             <th scope="col" class="fixed-width">Actions</th>
         </tr>
         <tr>
-            <th scope="col" colspan="9"><input class="search_by_name" type="text" oninput="myFunction()"
+            <th scope="col" colspan="8"><input class="search_by_name" type="text" oninput="myFunction()"
                     placeholder="Search by..."></th>
             <th><select class="filter_by" onchange="myFunction()">
                     <option value="0">First name</option>
@@ -35,9 +34,8 @@
                     <option value="3">Job Title</option>
                     <option value="4">Phone</option>
                     <option value="5">Email</option>
-                    <option value="6">Social_media</option>
-                    <option value="7">Description</option>
-                    <option value="8">Created At</option>
+                    <option value="6">Description</option>
+                    <option value="7">Created At</option>
                 </select>
             </th>
         </tr>
@@ -56,7 +54,6 @@
             <td>{{ record.job_title }}</td>
             <td>{{ record.phone }}</td>
             <td>{{ record.email }}</td>
-            <td>{{ record.social_media }}</td>
             <td>{{ record.description }}</td>
             <td>{{ record.created_at }}</td>
             <td id="td_actions">

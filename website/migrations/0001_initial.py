@@ -25,8 +25,10 @@ class Migration(migrations.Migration):
                 ('zipcode', models.CharField(max_length=20)),
                 ('industry', models.CharField(default='', max_length=100)),
                 ('website', models.URLField(blank=True, max_length=255, null=True)),
-                ('year_founded', models.PositiveIntegerField(blank=True, default=None, null=True)),
-                ('number_of_employees', models.PositiveIntegerField(blank=True, default=None, null=True)),
+                ('year_founded', models.PositiveIntegerField(
+                    blank=True, default=None, null=True)),
+                ('number_of_employees', models.PositiveIntegerField(
+                    blank=True, default=None, null=True)),
             ],
         ),
         migrations.CreateModel(
@@ -39,9 +41,11 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=254)),
                 ('creation_date', models.DateField()),
                 ('status', models.CharField(max_length=50)),
-                ('lead_source', models.CharField(blank=True, default=None, max_length=100, null=True)),
+                ('lead_source', models.CharField(blank=True,
+                 default=None, max_length=100, null=True)),
                 ('lead_description', models.TextField(blank=True, null=True)),
-                ('expected_close_date', models.DateField(blank=True, default=None, null=True)),
+                ('expected_close_date', models.DateField(
+                    blank=True, default=None, null=True)),
             ],
         ),
         migrations.CreateModel(
@@ -52,8 +56,10 @@ class Migration(migrations.Migration):
                 ('last_name', models.CharField(max_length=255)),
                 ('phone', models.CharField(default='', max_length=20)),
                 ('email', models.EmailField(max_length=254)),
-                ('department', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('start_date', models.DateField(blank=True, default=None, null=True)),
+                ('department', models.CharField(blank=True,
+                 default=None, max_length=100, null=True)),
+                ('start_date', models.DateField(
+                    blank=True, default=None, null=True)),
             ],
         ),
         migrations.CreateModel(
@@ -61,12 +67,16 @@ class Migration(migrations.Migration):
             fields=[
                 ('order_id', models.AutoField(primary_key=True, serialize=False)),
                 ('order_date', models.DateField()),
-                ('order_amount', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('order_status', models.CharField(blank=True, default='', max_length=50, null=True)),
+                ('order_amount', models.DecimalField(
+                    decimal_places=2, max_digits=10)),
+                ('order_status', models.CharField(
+                    blank=True, default='', max_length=50, null=True)),
                 ('order_description', models.TextField(blank=True, null=True)),
                 ('shipping_address', models.TextField(blank=True, null=True)),
-                ('company', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='website.companies')),
-                ('manager', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='website.managers')),
+                ('company', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='website.companies')),
+                ('manager', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='website.managers')),
             ],
         ),
         migrations.CreateModel(
@@ -78,16 +88,20 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(default='', max_length=100)),
                 ('phone', models.CharField(default='', max_length=20)),
                 ('email', models.EmailField(max_length=254)),
-                ('social_media', models.URLField(blank=True, max_length=255, null=True)),
+                ('social_media', models.URLField(
+                    blank=True, max_length=255, null=True)),
                 ('description', models.TextField(blank=True, null=True)),
-                ('date_of_birth', models.DateField(blank=True, default=None, null=True)),
+                ('date_of_birth', models.DateField(
+                    blank=True, default=None, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('company', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='website.companies')),
+                ('company', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='website.companies')),
             ],
         ),
         migrations.AddField(
             model_name='companies',
             name='manager',
-            field=models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='website.managers'),
+            field=models.ForeignKey(blank=True, default=None, null=True,
+                                    on_delete=django.db.models.deletion.SET_NULL, to='website.managers'),
         ),
     ]

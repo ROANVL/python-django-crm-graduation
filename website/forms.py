@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Contacts, Companies, Managers, Orders, Leads
+from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department
 
 
 class SignUpForm(UserCreationForm):
@@ -53,7 +53,6 @@ class AddRecordForm(forms.ModelForm):
             "email",
             "company",
             "description",
-            "social_media",
             "date_of_birth",
         ]
         widgets = {
@@ -64,7 +63,6 @@ class AddRecordForm(forms.ModelForm):
             "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "Email"}),
             "company": forms.Select(attrs={"class": "form-control"}),
             "description": forms.Textarea(attrs={"class": "form-control", "placeholder": "Description"}),
-            "social_media": forms.URLInput(attrs={"class": "form-control", "placeholder": "Social Media URL"}),
             "date_of_birth": forms.DateInput(attrs={"class": "form-control", "placeholder": "2020-01-02"}),
         }
 
@@ -122,20 +120,28 @@ class AddManagerForm(forms.ModelForm):
             "email",
             "job_title",
             "department",
-            "start_date",
         ]
         widgets = {
             "first_name": forms.TextInput(attrs={"class": "form-control", "placeholder": "First Name"}),
             "last_name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Last Name"}),
             "phone": forms.TextInput(attrs={"class": "form-control", "placeholder": "Phone"}),
             "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "Email"}),
-            "job_title": forms.TextInput(attrs={"class": "form-control", "placeholder": "Job Title"}),
-            "department": forms.TextInput(attrs={"class": "form-control", "placeholder": "Department"}),
-            "start_date": forms.DateInput(attrs={"class": "form-control", "placeholder": "Start Date"}),
+            # Используем виджет Select
+            "job_title": forms.Select(attrs={"class": "form-control"}),
+            # Используем виджет Select
+            "department": forms.Select(attrs={"class": "form-control"}),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        # Получаем список доступных должностей и отделов из базы данных
+        job_positions = JobPosition.objects.all()
+        departments = Department.objects.all()
+
+        # Создаем выборки для полей job_title и department
+        self.fields['job_title'].queryset = job_positions
+        self.fields['department'].queryset = departments
 
 
 class AddOrderForm(forms.ModelForm):
@@ -155,10 +161,20 @@ class AddOrderForm(forms.ModelForm):
             "order_amount": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Order Amount"}),
             "company": forms.Select(attrs={"class": "form-control", "placeholder": "Company"}),
             "manager": forms.Select(attrs={"class": "form-control", "placeholder": "Manager"}),
-            "order_status": forms.TextInput(attrs={"class": "form-control", "placeholder": "Order Status"}),
+            # Используем виджет Select
+            "order_status": forms.Select(attrs={"class": "form-control"}),
             "order_description": forms.Textarea(attrs={"class": "form-control", "placeholder": "Order Description"}),
             "shipping_address": forms.Textarea(attrs={"class": "form-control", "placeholder": "Shipping Address"}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Получаем список доступных статусов заказа из базы данных
+        order_statuses = OrderStatus.objects.all()
+
+        # Создаем выборку для поля order_status
+        self.fields['order_status'].queryset = order_statuses
 
 
 class AddLeadForm(forms.ModelForm):
