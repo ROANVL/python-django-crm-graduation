@@ -9,15 +9,13 @@
         <li><a href="{% url 'leads' %}">Leads</a></li>
         
         
-        <li>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">    
-                    Reports
-                </button>
-                <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-start">
-                    <li><a class="dropdown-item" href="{% url 'sales_report_by_managers' %}">Sales Report by Managers</a></li>
-                </ul>
-            </div>
+        <li class="dropdown">
+                <button onclick="toggleDropdown()" class="dropbtn">Reports</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a class="dropdown-item" href="{% url 'sales_report_by_managers' %}">Sales Report by Managers</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
         </li>
 
     </ul>

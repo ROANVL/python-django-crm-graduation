@@ -307,13 +307,23 @@ def sales_report_chart(request):
     data_values = [
         manager.total_sales if manager.total_sales else 0 for manager in managers_sales]
 
-    plt.figure(figsize=(12, 8), dpi=80)  # Увеличили размер и DPI
-    plt.bar(data_names, data_values)
-    plt.xlabel('Managers')
-    plt.ylabel('Total Sales')
-    plt.title('Sales Report by Managers')
+    # Установка размера и DPI всей диаграммы
+    plt.figure(figsize=(20, 8), dpi=80, facecolor='#dcdad7')
+
+    # Устанавливаем цвет фона для всей диаграммы и области под столбцами
+    plt.gca().set_facecolor('#dcdad7')
+
+    # Создаем объект Axes для управления диаграммой
+    ax = plt.subplot(111)
+
+    # Установка цвета столбцов
+    # Установите нужный цвет для столбцов
+    bars = ax.bar(data_names, data_values, color='#3A3F41')
+    plt.xlabel('Managers', fontstyle='italic', fontsize=16)
+    plt.ylabel('Total Sales', fontstyle='italic', fontsize=16)
+    plt.title('Sales Report by Managers', fontstyle='italic', fontsize=16)
     plt.xticks(rotation=45)
-    plt.tight_layout()  # Добавили эту строку для более компактного отображения
+    plt.tight_layout()
 
     buffer = io.BytesIO()
     plt.savefig(buffer, format='png')
