@@ -28,7 +28,7 @@ function filterTableByColumn() {
 // PAGINATION
 
 let currentPage = 1;
-let rowsPerPage = 10; // Начальное количество строк на странице
+let rowsPerPage = 10;
 const table = document.getElementById("myTable");
 const tableRows = table.querySelectorAll("tbody tr");
 
@@ -64,19 +64,14 @@ function changePage(direction) {
 function changeRowsPerPage() {
     const newRowsPerPage = parseInt(document.getElementById("rowsPerPage").value);
     rowsPerPage = newRowsPerPage;
-    currentPage = 1; // При изменении количества строк сбрасываем текущую страницу на первую
+    currentPage = 1;
     displayPage();
 }
 
 function updatePageNumbers() {
     const maxPage = Math.ceil(tableRows.length / rowsPerPage);
     const pagination = document.getElementById("pagination");
-
-    pagination.innerHTML = `
-        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-            <a class="page-link" onclick="changePage('prev')">Previous</a>
-        </li>
-    `;
+    pagination.innerHTML = '';
 
     for (let i = 1; i <= maxPage; i++) {
         const li = document.createElement("li");
@@ -88,16 +83,10 @@ function updatePageNumbers() {
         li.appendChild(a);
         pagination.appendChild(li);
     }
-
-    pagination.innerHTML += `
-        <li class="page-item ${currentPage === maxPage ? 'disabled' : ''}">
-            <a class="page-link" onclick="changePage('next')">Next</a>
-        </li>
-    `;
 }
 
-displayPage(); // Инициализация при загрузке страницы
-updatePageNumbers(); // Обновляем номера страниц при инициализации
+displayPage();
+updatePageNumbers();
 
 
 

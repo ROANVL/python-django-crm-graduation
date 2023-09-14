@@ -1,3 +1,11 @@
+body {
+    background-image: url('/static/img/fon.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
 .container {
 
     display: grid;
@@ -158,6 +166,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 0;
     outline: none;
@@ -175,7 +184,7 @@
     width: 100%;
     padding: 3%;
     background-color: rgb(58, 63, 65) !important;
-    color: #fff;
+    color: #ffffff;
     border: none;
     border-radius: 0;
     cursor: pointer;
@@ -218,7 +227,9 @@
     /* Внутренний отступ вокруг текста */
     margin-bottom: 10px;
     /* Отступ снизу */
+    background-color: #ffffff;
     border: 1px solid #ccc;
+
     /* Граница */
     border-radius: 0;
     /* Скругленные углы */
@@ -241,7 +252,7 @@
     padding: 3%;
     margin: 1%;
     background-color: rgb(58, 63, 65) !important;
-    color: #fff;
+    color: #ffffff;
     border: none;
     border-radius: 0;
     cursor: pointer;
@@ -291,6 +302,7 @@
 
 .nav-link {
     width: 100%;
+
 }
 
 .nav-item {
@@ -533,4 +545,21 @@ img {
     width: 70%;
     height: auto;
     /* Это, чтобы соотношение сторон сохранялось */
+}
+
+
+.page-item active,
+.page-item disabled {
+    background-color: rgb(58, 63, 65);
+    color: #fff;
+}
+
+.page-link {
+    background-color: rgb(58, 63, 65);
+    color: #fff;
+}
+
+.page-item disabled {
+    background-color: rgb(58, 63, 65);
+    color: #fff;
 }
