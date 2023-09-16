@@ -8,7 +8,7 @@
 
 
 <div class="add_btn  mb-3 text-end">
-    <a href="{% url 'add_manager' %}" class="btn btn-secondary">Add manager</a> 
+    <a href="{% url 'add_manager' %}" class="btn btn-primary">Add manager</a> 
 </div>
 
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
@@ -49,7 +49,7 @@
             <td>{{ manager_record.department }}</td>
             <td id="td_actions">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Action
                     </button>
                     <ul class="dropdown-menu">
@@ -119,7 +119,7 @@
             <input type="password" class="form-control" name="password" , placeholder="Password" required>
         </div>
         <br />
-        <button type="submit" class="btn btn-secondary">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
 
     </form>
 

@@ -323,6 +323,10 @@ def sales_report_chart(request):
     plt.ylabel('Total Sales', fontstyle='italic', fontsize=16)
     plt.title('Sales Report by Managers', fontstyle='italic', fontsize=16)
     plt.xticks(rotation=45)
+
+    # Добавление сетки с синим цветом
+    ax.grid(True, axis='y', linestyle='--', alpha=0.7, color='blue')
+
     plt.tight_layout()
 
     buffer = io.BytesIO()

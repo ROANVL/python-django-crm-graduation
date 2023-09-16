@@ -8,7 +8,7 @@
 
 
 <div class="add_btn  mb-3 text-end">
-    <a href="{% url 'add_order' %}" class="btn btn-secondary">Add order</a>
+    <a href="{% url 'add_order' %}" class="btn btn-primary">Add order</a>
 </div>
 
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
@@ -58,7 +58,7 @@
             <td>{{ order_record.created_at }}</td>
             <td id="td_actions">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Action
                     </button>
                     <ul class="dropdown-menu">
@@ -125,7 +125,7 @@
             <input type="password" class="form-control" name="password" , placeholder="Password" required>
         </div>
         <br />
-        <button type="submit" class="btn btn-secondary">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
 
     </form>
 
