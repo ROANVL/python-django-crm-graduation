@@ -1,24 +1,39 @@
-<!-- Ваш HTML-код для меню боковой навигации (sidenav) -->
 <div class="sidenav">
     <ul class="sidenav_menu">
         <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'contacts' %}">Contacts</a></li>
-        <li><a href="{% url 'companies' %}">Companies</a></li>
-        <li><a href="{% url 'managers' %}">Managers</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
         <li><a href="{% url 'orders' %}">Orders</a></li>
-        <li><a href="{% url 'leads' %}">Leads</a></li>
-        
+
         
         <li>
-                <button onclick="toggleDropdown()" class="dropbtn">Reports</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a class="dropdown-item" href="{% url 'sales_report_by_managers' %}">Sales Report by Managers</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
+            <button onclick="toggleDropdown('myDropdown3')" class="dropbtn">Clients</button>
+            <div id="myDropdown3" class="dropdown-content">
+                <a class="dropdown-item" href="{% url 'companies' %}">Companies</a>
+                <a class="dropdown-item" href="{% url 'contacts' %}">Contacts</a>
+                <a class="dropdown-item" href="#">------</a>
+            </div>
+        </li>
+
+
+
+
+        <li>
+            <button onclick="toggleDropdown('myDropdown2')" class="dropbtn">Company Structure</button>
+            <div id="myDropdown2" class="dropdown-content">
+                <a class="dropdown-item" href="{% url 'managers' %}">Managers</a>
+                <a class="dropdown-item" href="#">Department</a>
+                <a class="dropdown-item" href="#">Job title</a>
+            </div>
+        </li>
+
+        <li>
+            <button onclick="toggleDropdown('myDropdown')" class="dropbtn">Reports</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a class="dropdown-item" href="{% url 'sales_report_by_managers' %}">Sales Report by Managers</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
         </li>
 
     </ul>
 </div>
-
-    

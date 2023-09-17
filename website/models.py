@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 
 class JobPosition(models.Model):
@@ -13,8 +14,6 @@ class JobPosition(models.Model):
 
 class Department(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    job_position = models.ForeignKey(
-        JobPosition, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -85,18 +84,61 @@ class OrderStatus(models.Model):
         return self.name
 
 
-class Orders(models.Model):
-    order_id = models.AutoField(primary_key=True)
-    order_date = models.DateField()
-    order_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    company = models.ForeignKey(Companies, on_delete=models.CASCADE)
-    manager = models.ForeignKey('Managers', on_delete=models.CASCADE)
-    order_status = models.ForeignKey(
-        OrderStatus, on_delete=models.SET_NULL, null=True, blank=True)
+class Product(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    quantity = models.PositiveIntegerField(default=0)
+    price_per_unit = models.DecimalField(max_digits=10, decimal_places=2)
 
-    order_description = models.TextField(null=True, blank=True)
+    def __str__(self):
+        return self.name
+
+
+class Orders(models.Model):
+    order_status = models.ForeignKey(
+        OrderStatus, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    order_id = models.AutoField(primary_key=True)
+    company = models.ForeignKey(Companies, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, default=None, null=True)
+    quantity = models.PositiveIntegerField(
+        default=None)
+    shipping_date = models.DateField(
+        verbose_name="Shipping Date"
+    )
     shipping_address = models.TextField(null=True, blank=True)
+    order_description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    order_amount = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True)
+    manager = models.ForeignKey(
+        Managers, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.product and self.quantity is not None:
+            self.order_amount = self.product.price_per_unit * self.quantity
+
+        # Check if a company is associated with this order
+        if self.company:
+            # Build the shipping address from company data
+            address_parts = []
+            if self.company.address:
+                address_parts.append(self.company.address)
+            if self.company.city:
+                address_parts.append(self.company.city)
+            if self.company.state:
+                address_parts.append(self.company.state)
+            if self.company.zipcode:
+                address_parts.append(self.company.zipcode)
+
+            # Join address parts into a single string
+            self.shipping_address = ", ".join(address_parts)
+
+            # Set the manager from the associated company
+            if self.company.manager:
+                self.manager = self.company.manager
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Order #{self.order_id}"

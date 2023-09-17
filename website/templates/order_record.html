@@ -1,44 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <div class="col-md-6 offset-md-3">
     <div class="record_card">
         <h1>View Order Record</h1>
 
-        <strong>Order Date: </strong>
-        <p class="white-cell"> {{ order_record.order_date }}</p>
-
-        <strong>Order Amount: </strong>
-        <p class="white-cell"> {{ order_record.order_amount }}</p>
+        <strong>Order Status: </strong>
+        <p class="white-cell">{{ order_record.order_status }}</p>
 
         <strong>Company: </strong>
         <p class="white-cell">{{ order_record.company }}</p>
 
-        <strong>Manager: </strong>
-        <p class="white-cell">{{ order_record.manager }}</p>
+        <strong>Product: </strong>
+        <p class="white-cell">{{ order_record.product.name }}</p>
+        
+        <strong>Quantity: </strong>
+        <p class="white-cell">{{ order_record.quantity }}</p> 
 
-        <strong>Order Status: </strong>
-        <p class="white-cell">{{ order_record.order_status }}</p>
+        <strong>Order Amount: </strong>
+        <p class="white-cell"> {{ order_record.order_amount }}</p>
 
-        <strong>Order Description: </strong>
-        <p class="white-cell">{{ order_record.order_description }}</p>
+        <strong>Shipping date: </strong>
+        <p class="white-cell"> {{ order_record.shipping_date }}</p>
 
         <strong>Shipping Address: </strong>
         <p class="white-cell">{{ order_record.shipping_address }}</p>
 
+        <strong>Order Description: </strong>
+        <p class="white-cell">{{ order_record.order_description }}</p>
 
-        
+
+
+        <strong>Manager: </strong>
+        <p class="white-cell">{{ order_record.manager }}</p>
+
+
+
+
 
         <div class="form-group">
             <a href="{% url 'update_order' order_record.order_id %}" class="btn btn-primary">Update</a>
             <a href="{% url 'orders' %}" class="btn btn-primary">Back</a>
         </div>
-
     </div>
 </div>
-
-
-
-
-
-{% endblock%}
+{% endblock %}

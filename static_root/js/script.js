@@ -28,7 +28,7 @@ function filterTableByColumn() {
 // PAGINATION
 
 let currentPage = 1;
-let rowsPerPage = 10; // Начальное количество строк на странице
+let rowsPerPage = 10;
 const table = document.getElementById("myTable");
 const tableRows = table.querySelectorAll("tbody tr");
 
@@ -64,19 +64,14 @@ function changePage(direction) {
 function changeRowsPerPage() {
     const newRowsPerPage = parseInt(document.getElementById("rowsPerPage").value);
     rowsPerPage = newRowsPerPage;
-    currentPage = 1; // При изменении количества строк сбрасываем текущую страницу на первую
+    currentPage = 1;
     displayPage();
 }
 
 function updatePageNumbers() {
     const maxPage = Math.ceil(tableRows.length / rowsPerPage);
     const pagination = document.getElementById("pagination");
-
-    pagination.innerHTML = `
-        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-            <a class="page-link" onclick="changePage('prev')">Previous</a>
-        </li>
-    `;
+    pagination.innerHTML = '';
 
     for (let i = 1; i <= maxPage; i++) {
         const li = document.createElement("li");
@@ -88,36 +83,30 @@ function updatePageNumbers() {
         li.appendChild(a);
         pagination.appendChild(li);
     }
-
-    pagination.innerHTML += `
-        <li class="page-item ${currentPage === maxPage ? 'disabled' : ''}">
-            <a class="page-link" onclick="changePage('next')">Next</a>
-        </li>
-    `;
 }
 
-displayPage(); // Инициализация при загрузке страницы
-updatePageNumbers(); // Обновляем номера страниц при инициализации
+displayPage();
+updatePageNumbers();
 
 
 
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function toggleDropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
+
+
+// Функция для переключения видимости выпадающего списка по его ID
+function toggleDropdown(dropdownId) {
+    var dropdown = document.getElementById(dropdownId);
+    if (dropdown) {
+        dropdown.classList.toggle("show");
+    }
 }
 
-// Close the dropdown menu if the user clicks outside of it
+// Закрыть выпадающий список, если пользователь кликнул вне его
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
+        var dropdowns = document.querySelectorAll(".dropdown-content.show");
+        dropdowns.forEach(function (dropdown) {
+            dropdown.classList.remove('show');
+        });
     }
-} 
+}

@@ -1,5 +1,6 @@
 import mysql.connector
 from random import randint, choice
+import datetime
 
 # Устанавливаем соединение с базой данных
 connection = mysql.connector.connect(
@@ -12,46 +13,35 @@ connection = mysql.connector.connect(
 # Создаем объект для выполнения SQL-запросов
 cursor = connection.cursor()
 
+# Генерируем случайную дату и время
+
+
+def created_at():
+    current_datetime = datetime.datetime.now()
+    return current_datetime.strftime('%Y-%m-%d %H:%M:%S')
+
 # Генерируем случайную дату в пределах последних года
 
 
-def random_date():
-    year = randint(2021, 2022)
-    month = randint(1, 12)
-    day = randint(1, 28)  # Предполагаем, что февраль считается до 28 числа
+def shipping_date():
+    year = randint(2023, 2023)
+    month = randint(10, 12)
+    day = randint(1, 31)  # Предполагаем, что февраль считается до 28 числа
     return f"{year}-{month:02d}-{day:02d}"
-
-# Генерируем случайную сумму заказа
-
-
-def random_order_amount():
-    return round(randint(100, 10000) + randint(0, 99) / 100, 2)
-
-# Генерируем случайный статус заказа
-
-
-def order_status_id():
-    return randint(1, 12)
 
 # Генерируем случайное описание заказа
 
 
-def random_order_description():
-    return f"Description for order #{randint(1, 1000)}"
-
-# Генерируем случайный адрес доставки
-
-
-def random_shipping_address():
-    return f"Address {randint(1, 1000)}, City {randint(1, 1000)}, State {randint(1, 1000)}, Zipcode {randint(1, 1000)}"
+def order_description():
+    return "Random description"  # Замените эту строку на свою логику
 
 
 # Пример SQL-запроса для вставки данных в таблицу website_orders
-insert_query = "INSERT INTO co_crm.website_orders (order_date, order_amount, company_id, manager_id, status_id, order_description, shipping_address) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+insert_query = "INSERT INTO co_crm.website_orders (order_status_id, company_id, product_id, quantity, shipping_date, order_amount, created_at, order_description) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 
 # Пример данных, которые нужно вставить в таблицу
 data_to_insert = [
-    (random_date(), random_order_amount(), randint(1, 91), randint(2, 31), order_status_id(), random_order_description(), random_shipping_address()) for _ in range(30)
+    (randint(1, 2), randint(2, 35), randint(2, 20), randint(1, 50), shipping_date(), 0, created_at(), order_description()) for _ in range(30)
 ]
 
 # Вставляем данные в таблицу

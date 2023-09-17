@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .login_decorator import login_required
-from .forms import SignUpForm, AddRecordForm, AddCompanyForm, AddManagerForm, AddOrderForm, AddLeadForm
-from .models import Contacts, Managers, Companies, Orders, Leads
+from .forms import SignUpForm, AddRecordForm, AddCompanyForm, AddManagerForm, AddOrderForm, AddLeadForm, ProductForm
+from .models import Contacts, Managers, Companies, Orders, Leads, Product
 from django.db.models import Sum, F
 from django.http import HttpResponse
 import io
@@ -65,6 +65,12 @@ def contacts(request):
 
 
 @login_required
+def products(request):
+    products_records = Product.objects.all()
+    return render(request, 'products.html', {'products_records': products_records})
+
+
+@login_required
 def companies(request):
     companies_records = Companies.objects.all()
     return render(request, 'companies.html', {'companies_records': companies_records})
@@ -92,6 +98,12 @@ def leads(request):
 def contact_record(request, pk):
     contact_record = Contacts.objects.get(contact_id=pk)
     return render(request, 'contact_record.html', {'contact_record': contact_record})
+
+
+@login_required
+def product_record(request, pk):
+    product_record = Product.objects.get(id=pk)
+    return render(request, 'product_record.html', {'product_record': product_record})
 
 
 @login_required
@@ -124,6 +136,14 @@ def delete_record(request, pk):
     delete_it.delete()
     messages.success(request, "The record has been deleted successfully.")
     return redirect('contacts')
+
+
+@login_required
+def delete_product(request, pk):
+    delete_it = Product.objects.get(id=pk)
+    delete_it.delete()
+    messages.success(request, "The record has been deleted successfully.")
+    return redirect('products')
 
 
 @login_required
@@ -168,6 +188,18 @@ def add_record(request):
                 request, "The record has been successfully added.")
             return redirect("contacts")
     return render(request, 'add_record.html', {"form": form})
+
+
+@login_required
+def add_product(request):
+    form = ProductForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, "The record has been successfully added.")
+            return redirect("products")
+    return render(request, 'add_product.html', {"form": form})
 
 
 @login_required
@@ -229,6 +261,19 @@ def update_record(request, pk):
                 request, "The record has been successfully updated!")
             return redirect("contacts")
     return render(request, "update_record.html", {"form": form})
+
+
+@login_required
+def update_product(request, pk):
+    current_record = Product.objects.get(id=pk)
+    form = ProductForm(request.POST or None, instance=current_record)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, "The record has been successfully updated!")
+            return redirect("products")
+    return render(request, "update_product.html", {"form": form})
 
 
 @login_required

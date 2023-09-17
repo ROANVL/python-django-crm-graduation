@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department
+from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product
 
 
 class SignUpForm(UserCreationForm):
@@ -72,6 +72,20 @@ class AddRecordForm(forms.ModelForm):
         self.fields['company'].queryset = Companies.objects.all()
 
 
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ["name", "quantity", "price_per_unit"]
+
+    # Дополнительные опции для полей, если необходимо
+    # Например, можно добавить виджеты, атрибуты и т. д.
+    widgets = {
+        'name': forms.TextInput(attrs={"class": "form-control", "placeholder": "Name"}),
+        'quantity': forms.TextInput(attrs={"class": "form-control", "placeholder": "Quantity"}),
+        'price_per_unit': forms.TextInput(attrs={"class": "form-control", "placeholder": "Price per unit"}),
+    }
+
+
 class AddCompanyForm(forms.ModelForm):
     class Meta:
         model = Companies
@@ -99,8 +113,8 @@ class AddCompanyForm(forms.ModelForm):
             "zipcode": forms.TextInput(attrs={"class": "form-control", "placeholder": "Zipcode"}),
             "industry": forms.TextInput(attrs={"class": "form-control", "placeholder": "Industry"}),
             "website": forms.URLInput(attrs={"class": "form-control", "placeholder": "Website"}),
-            "year_founded": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Year Founded"}),
-            "number_of_employees": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Number of Employees"}),
+            "year_founded": forms.TextInput(attrs={"class": "form-control",  "placeholder": "Year Founded"}),
+            "number_of_employees": forms.TextInput(attrs={"class": "form-control",  "placeholder": "Number of Employees"}),
             "manager": forms.Select(attrs={"class": "form-control"}),
         }
 
@@ -148,33 +162,43 @@ class AddOrderForm(forms.ModelForm):
     class Meta:
         model = Orders
         fields = [
-            "order_date",
-            "order_amount",
-            "company",
-            "manager",
             "order_status",
+            "company",
+            "product",
+            "quantity",
+            "shipping_date",
             "order_description",
-            "shipping_address",
         ]
         widgets = {
-            "order_date": forms.DateInput(attrs={"class": "form-control", "placeholder": "Order Date"}),
-            "order_amount": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Order Amount"}),
-            "company": forms.Select(attrs={"class": "form-control", "placeholder": "Company"}),
-            "manager": forms.Select(attrs={"class": "form-control", "placeholder": "Manager"}),
-            # Используем виджет Select
             "order_status": forms.Select(attrs={"class": "form-control"}),
+            "company": forms.Select(attrs={"class": "form-control", "placeholder": "Company"}),
+            "product": forms.Select(attrs={"class": "form-control", "placeholder": "Product"}),
+            "quantity": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Quantity"}),
+            "shipping_date": forms.DateInput(attrs={"class": "form-control", "placeholder": "Shipping Date"}),
             "order_description": forms.Textarea(attrs={"class": "form-control", "placeholder": "Order Description"}),
-            "shipping_address": forms.Textarea(attrs={"class": "form-control", "placeholder": "Shipping Address"}),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Получаем список доступных статусов заказа из базы данных
+        # Get a list of available order statuses from the database
         order_statuses = OrderStatus.objects.all()
 
-        # Создаем выборку для поля order_status
+        # Create a queryset for the order_status field
         self.fields['order_status'].queryset = order_statuses
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        # Calculate order_amount based on product price_per_unit and quantity
+        product = cleaned_data.get("product")
+        quantity = cleaned_data.get("quantity")
+
+        if product and quantity is not None:
+            order_amount = product.price_per_unit * quantity
+            self.instance.order_amount = order_amount
+
+        return cleaned_data
 
 
 class AddLeadForm(forms.ModelForm):
