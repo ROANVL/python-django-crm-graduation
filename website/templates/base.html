@@ -3,55 +3,86 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="shortcut icon"/>
+    <!-- Logo -->
+    <link href="{% static 'img/logo.ico' %}" rel="shortcut icon"/>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css"/>
     <title>ROANVL_CRM</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css">
-</head>
+  </head>
 
+  <body>
 
-<body>
-
-<div class="container">
-    <div class="header">
-        {% include 'navbar.html' %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
+    <div class="container">
+      
+      <header class="header">
+       
+        {% include 'navbar.html' %} 
+        
+        
+        {% if messages %} 
+        
+        {% for message in message%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %} 
+        
         {% endif %}
-    </div>
+      
+      </header>
 
-    {% if user.is_authenticated %}
-        <div class="sidenav">
-            {% include 'sidenav.html' %}
+      
+      {% if user.is_authenticated %}
+
+      <div class="sidenav">{% include 'sidenav.html' %}</div>
+
+      {% else %}
+      {% endif %}
+
+
+      <main class="main">
+      {% block content %}
+      {% endblock %}
+      </main>
+
+
+
+      <footer class="footer">
+        <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)"
+        >
+          &copy; {% now "Y" %} Copyright:
+          <a class="text-light" href="#" style="text-decoration: none">
+            <span style="color: greenyellow:">ROANVL</span>
+          </a>
         </div>
-    {% else %}
-        <div>
-            <!-- Content for the sidenav when the user is not authenticated -->
-        </div>
-    {% endif %}
-
-    <div class="main">
-        {% block content %}
-        {% endblock %}
+      </footer>
     </div>
 
-     <div class="footer">
-    {% include 'footer.html' %} 
-    </div>
-    
-</div>
+    <!-- Bootstrap 5 JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-<script src="{% static 'js/script.js' %}"></script>
-</body>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
 </html>
