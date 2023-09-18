@@ -367,9 +367,6 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-
-
 /* Стилизация формы карточки записи */
 .record_card {
     width: 50%;
@@ -403,10 +400,7 @@ body {
     background-color: rgb(58, 63, 65);
 }
 
-.form-group .btn {
-    margin-bottom: 10px;
-    /* Добавляем правый отступ между элементами */
-}
+
 
 .dropdown-menu {
     width: 100%;

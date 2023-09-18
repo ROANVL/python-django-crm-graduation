@@ -77,13 +77,11 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ["name", "quantity", "price_per_unit"]
 
-    # Дополнительные опции для полей, если необходимо
-    # Например, можно добавить виджеты, атрибуты и т. д.
-    widgets = {
-        'name': forms.TextInput(attrs={"class": "form-control", "placeholder": "Name"}),
-        'quantity': forms.TextInput(attrs={"class": "form-control", "placeholder": "Quantity"}),
-        'price_per_unit': forms.TextInput(attrs={"class": "form-control", "placeholder": "Price per unit"}),
-    }
+        widgets = {
+            'name': forms.TextInput(attrs={"class": "form-control", "placeholder": "Name"}),
+            'quantity': forms.TextInput(attrs={"class": "form-control", "placeholder": "Quantity"}),
+            'price_per_unit': forms.TextInput(attrs={"class": "form-control", "placeholder": "Price per unit"}),
+        }
 
 
 class AddCompanyForm(forms.ModelForm):
