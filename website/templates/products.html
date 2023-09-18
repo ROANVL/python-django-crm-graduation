@@ -14,18 +14,10 @@
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
     <thead class="table-dark">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price per unit</th>
-            <th scope="col" class="fixed-width">Actions</th>
-        </tr>
-        <tr>
-            <th scope="col" colspan="3"><input class="search_by_name" type="text" oninput="filterTableByColumn()"
-                    placeholder="Search by..."></th>
-            <th><select class="filter_by" onchange="filterTableByColumn()">
-                    <option value="0">Name</option>
-                    <option value="1">Quantity</option>
-                    <option value="2">Price per unit</option></select></th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price per unit</th>
+            <th style="width: 8%;">Actions</th>
         </tr>
     </thead>
 
@@ -61,34 +53,6 @@
 
     </tbody>
 </table>
-
-
-
-
-<div class="rows-per-page">
-    <label for="rowsPerPage">Rows per page:</label>
-    <select id="rowsPerPage" onchange="changeRowsPerPage()">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-    </select>
-</div>
-
-
-
-<div class="pagination_prev_next">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end" id="pagination">
-            <li class="page-item disabled">
-                <a class="page-link" onclick="changePage('prev')">Previous</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-
-
-
 
 
 

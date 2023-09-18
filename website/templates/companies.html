@@ -14,37 +14,19 @@
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
     <thead class="table-dark">
         <tr>
-            <th scope="col">Company Name</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-            <th scope="col">State</th>
-            <th scope="col">Zipcode</th>
-            <th scope="col">Industry</th>
-            <th scope="col">Website</th>
-            <th scope="col">Year Founded</th>
-            <th scope="col">Num. of employees</th>
-            <th scope="col">Manager</th>
-            <th scope="col" class="fixed-width">Actions</th>
-        </tr>
-
-        <tr>
-            <th scope="col" colspan="12"><input class="search_by_name" type="text" oninput="filterTableByColumn()"
-            placeholder="Search by..."></th>
-            <th><select class="filter_by" onchange="filterTableByColumn()">
-            <option value="0">Company Name</option>
-            <option value="1">Phone</option>
-            <option value="2">Email</option>
-            <option value="3">Address</option>
-            <option value="4">City</option>
-            <option value="5">State</option>
-            <option value="6">Zipcode</option>
-            <option value="7">Industry</option>
-            <option value="8">Website</option>
-            <option value="9">Year Founded</option>
-            <option value="10">Num. of employees</option>
-            <option value="11">Manager</option></select></th>
+            <th>Company Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Industry</th>
+            <th>Website</th>
+            <th>Year Founded</th>
+            <th>Num. of employees</th>
+            <th>Manager</th>
+            <th style="width: 8%;">Actions</th>
         </tr>
     </thead>
 
@@ -88,31 +70,6 @@
 
     </tbody>
 </table>
-
-
-
-<div class="rows-per-page">
-    <label for="rowsPerPage">Rows per page:</label>
-    <select id="rowsPerPage" onchange="changeRowsPerPage()">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-    </select>
-</div>
-
-
-
-<div class="pagination_prev_next">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end" id="pagination">
-            <li class="page-item disabled">
-                <a class="page-link" onclick="changePage('prev')">Previous</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-
 
 
 

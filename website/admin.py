@@ -2,8 +2,18 @@ from django.contrib import admin
 from .models import Contacts, OrderStatus, Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product
 
 
-admin.site.register(Companies)
+class ContactsAdmin(admin.ModelAdmin):
+    list_display = ["first_name", "last_name", "company",
+                    "job_title", "phone", "email", "description", "created_at"]
+    search_fields = ["first_name", "last_name", "company",
+                     "job_title", "phone", "email", "description", "created_at"]
+    list_per_page = 10
+
+
 admin.site.register(Contacts)
+
+
+admin.site.register(Companies)
 
 
 admin.site.register(Product)
