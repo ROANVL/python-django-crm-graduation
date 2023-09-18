@@ -11,6 +11,8 @@ html body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: none !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 }
 
 /* ----------------------------------*/
@@ -18,6 +20,8 @@ html body {
 
 .container {
     min-width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 }
 
 /* ----------------------------------*/

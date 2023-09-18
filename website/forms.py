@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product
+from django.forms.widgets import SelectDateWidget
 
 
 class SignUpForm(UserCreationForm):
