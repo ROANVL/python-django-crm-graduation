@@ -89,6 +89,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255, unique=True)
     quantity = models.PositiveIntegerField(default=0)
     price_per_unit = models.DecimalField(max_digits=10, decimal_places=2)
+    minimum_stock_level = models.IntegerField(default=None, blank=False)
 
     def __str__(self):
         return self.name

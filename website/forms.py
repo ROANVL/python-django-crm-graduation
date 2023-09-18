@@ -75,12 +75,13 @@ class AddRecordForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ["name", "quantity", "price_per_unit"]
+        fields = ["name", "quantity", "price_per_unit", "minimum_stock_level"]
 
         widgets = {
             'name': forms.TextInput(attrs={"class": "form-control", "placeholder": "Name"}),
             'quantity': forms.TextInput(attrs={"class": "form-control", "placeholder": "Quantity"}),
             'price_per_unit': forms.TextInput(attrs={"class": "form-control", "placeholder": "Price per unit"}),
+            'minimum_stock_level': forms.TextInput(attrs={"class": "form-control", "placeholder": "Minimum stock level"}),
         }
 
 

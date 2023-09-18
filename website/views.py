@@ -255,7 +255,10 @@ def add_order(request):
     else:
         form = AddOrderForm()  # Создание новой формы для заказа
 
-    return render(request, 'add_order.html', {"form": form})
+    # Измененный запрос для сортировки заказов по убыванию order_id
+    orders = Orders.objects.all().order_by('-order_id')
+
+    return render(request, 'add_order.html', {"form": form, "orders": orders})
 
 
 @login_required
