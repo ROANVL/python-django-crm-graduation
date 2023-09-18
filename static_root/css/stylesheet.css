@@ -43,11 +43,8 @@ body {
 # MAIN
 -----------------------------------*/
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1px;
+    grid-column: 2;
+    width: 100%;
 }
 
 /* ----------------------------------*/
@@ -350,7 +347,10 @@ body {
 /* Стилизация формы add */
 .add_record_form {
     width: 50%;
-    margin-top: 10%;
+
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     background-color: #f0f0f0;
     padding: 20px;
     border: 1px solid #ccc;
@@ -360,7 +360,9 @@ body {
 /* Стилизация формы add */
 .update_record_form {
     width: 50%;
-    margin-top: 10%;
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     background-color: #f0f0f0;
     padding: 20px;
     border: 1px solid #ccc;
@@ -368,9 +370,11 @@ body {
 }
 
 /* Стилизация формы карточки записи */
-.record_card {
+.view_record_card {
     width: 50%;
-    margin-top: 10%;
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     background-color: #f0f0f0;
     padding: 20px;
     border: 1px solid #ccc;
@@ -400,7 +404,10 @@ body {
     background-color: rgb(58, 63, 65);
 }
 
-
+.form-group .btn {
+    margin-bottom: 10px;
+    /* Добавляем правый отступ между элементами */
+}
 
 .dropdown-menu {
     width: 100%;
@@ -421,8 +428,9 @@ body {
 
 
 .add_btn {
-
+    width: 7%;
     margin-left: auto;
+    margin-right: 0.5%;
 }
 
 .content {

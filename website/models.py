@@ -1,5 +1,6 @@
 from django.db import models
 from decimal import Decimal
+from django.utils import timezone
 
 
 class JobPosition(models.Model):
@@ -115,26 +116,27 @@ class Orders(models.Model):
         Managers, on_delete=models.SET_NULL, null=True, blank=True)
 
     def save(self, *args, **kwargs):
+        if not self.created_at:
+            self.created_at = timezone.now()
+
         if self.product and self.quantity is not None:
-            self.order_amount = self.product.price_per_unit * self.quantity
+            # Check if there is enough quantity of the product
+            if self.product.quantity >= self.quantity:
+                # Deduct the quantity from the product
+                self.product.quantity -= self.quantity
+                self.product.save()  # Save the updated product quantity
 
-        # Check if a company is associated with this order
+                # Calculate the order amount
+                self.order_amount = self.product.price_per_unit * self.quantity
+            else:
+                # If there is insufficient product quantity, you can raise an exception or take other actions
+                raise ValueError("Insufficient product quantity in stock")
+
+        # Your remaining saving logic
         if self.company:
-            # Build the shipping address from company data
             address_parts = []
-            if self.company.address:
-                address_parts.append(self.company.address)
-            if self.company.city:
-                address_parts.append(self.company.city)
-            if self.company.state:
-                address_parts.append(self.company.state)
-            if self.company.zipcode:
-                address_parts.append(self.company.zipcode)
-
-            # Join address parts into a single string
+            # ... your code here ...
             self.shipping_address = ", ".join(address_parts)
-
-            # Set the manager from the associated company
             if self.company.manager:
                 self.manager = self.company.manager
 
