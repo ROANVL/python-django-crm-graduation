@@ -2,7 +2,7 @@
 # START CONFIGURATION
 -----------------------------------*/
 
-body {
+html body {
     height: 100%;
     margin: 0;
     max-width: 100%;
@@ -10,6 +10,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-color: none !important;
 }
 
 /* ----------------------------------*/
@@ -165,7 +166,7 @@ body {
 .login-form {
     max-width: 30em;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 35%;
     background-color: #f0f0f0;
     padding: 20px;
@@ -327,16 +328,9 @@ body {
     width: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
+.navbar {
+    background-color: rgb(58, 63, 65) !important;
+}
 
 
 

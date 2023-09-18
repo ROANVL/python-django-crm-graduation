@@ -228,13 +228,33 @@ def add_manager(request):
 
 @login_required
 def add_order(request):
-    form = AddOrderForm(request.POST or None)
-    if request.method == "POST":
+    if request.method == 'POST':
+        form = AddOrderForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(
-                request, "The order has been successfully added.")
-            return redirect("orders")
+            order = form.save(commit=False)
+
+            # Проверка остатков продукции
+            if order.product.quantity >= order.quantity:
+                # Если есть достаточное количество товаров, вычитываем их и сохраняем заказ
+                order.product.quantity -= order.quantity
+                order.product.save()
+                order.save()
+                messages.success(
+                    request, "The order has been successfully added.")
+                # Перенаправление на страницу заказов
+                return redirect('orders')
+            else:
+                # Если недостаточно товаров, выдаем сообщение
+                if not messages.get_messages(request):
+                    messages.error(
+                        request, f"Unfortunately, we're out of stock at the moment. The current quantity of the product is: {order.product.quantity}")
+        else:
+            messages.error(
+                request, 'Invalid form data. Please check your input.')
+
+    else:
+        form = AddOrderForm()  # Создание новой формы для заказа
+
     return render(request, 'add_order.html', {"form": form})
 
 

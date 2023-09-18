@@ -3,17 +3,27 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-    <form method="POST" action="{% url 'add_record' %}" class="add_record_form">
+    <div class="alert alert-light" role="alert">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    
+    <form method="POST" action="{% url 'add_order' %}" class="add_record_form">
         {% csrf_token %}
-        <h1>Add Contact</h1>
+        <h1>Add Order</h1>
+
         {{ form.as_p }}
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Add Contact</button>
-            <a href="{% url 'contacts' %}" class="btn btn-primary">Back</a>
+            <button type="submit" class="btn btn-primary">Add Order</button>
+            <a href="{% url 'orders' %}" class="btn btn-primary">Back</a>
         </div>
     </form>
 </div>
-
 
 {% endblock %}

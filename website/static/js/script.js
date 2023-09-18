@@ -1,8 +1,3 @@
-
-
-
-
-
 // Функция для переключения видимости выпадающего списка по его ID
 function toggleDropdown(dropdownId) {
     var dropdown = document.getElementById(dropdownId);
@@ -32,3 +27,12 @@ $("#myTable").DataTable({
     bInfo: true,        // Info on footer
     bSorting: true,     // Filter A to Z and Z to A (and numbers)
 });
+
+
+// Ждем 5 секунд и скрываем сообщение
+setTimeout(function () {
+    var alertMessage = document.getElementById('alertMessage');
+    if (alertMessage) {
+        alertMessage.style.display = 'none';
+    }
+}, 5000); // 5000 миллисекунд = 5 секунд
