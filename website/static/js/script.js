@@ -26,7 +26,19 @@ $("#myTable").DataTable({
     searching: true,    // Input search
     bInfo: true,        // Info on footer
     bSorting: true,     // Filter A to Z and Z to A (and numbers)
+    // Disable colums with specific filter A to Z, Z to A
+    "columnDefs": [{
+        "targets": [-1],   // More then 1 [4, 5, 6]
+        "orderable": false
+    }]
 });
+// Enable Searchbox Outside
+var newSearch = $('#myTable').DataTable();
+$('#search').keyup(function () {
+    newSearch.search($(this).val()).draw();
+})
+
+
 
 
 // Ждем 5 секунд и скрываем сообщение

@@ -18,36 +18,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
     integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <!-- Datatables CSS-->
+    <!-- Datatables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"/>
-
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
-
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
     <!-- Static CSS -->
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css"/>
     <title>ROANVL_CRM</title>
   </head>
 
  <body>
+
     <div class="container">
+      
+
+
       <header class="header">
-          {% include 'navbar.html' %}
-          {% if messages %}
+
+      {% include 'navbar.html' %}
+          
+      {% if messages %}
           <div class="alert alert-warning alert-dismissible" role="alert" id="alertMessage">
-    <div class="messages">
-        {% for message in messages %}
-            <span> {{ message }}</span>
-        {% endfor %}
-    </div>
-</div>
-            {% endif %}
+          <div class="messages">
+              {% for message in messages %}
+                  <span> {{ message }}</span>
+              {% endfor %}
+          </div>
+          </div>
+        
+      {% endif %}
 
       </header>
 
-        {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
             <div>{% include 'sidenav.html' %}</div>
-        {% endif %}
+      {% endif %}
 
       <main class="main">
           {% block content %}

@@ -1,8 +1,3 @@
-
-
-
-
-
 // Функция для переключения видимости выпадающего списка по его ID
 function toggleDropdown(dropdownId) {
     var dropdown = document.getElementById(dropdownId);
@@ -24,11 +19,27 @@ window.onclick = function (event) {
 
 $("#myTable").DataTable({
     // Datatables configuration
-    paging: true,  // Pagination
-    pageLength: 10, // Rows per page
+    paging: true,       // Pagination
+    pageLength: 10,     // Rows per page
     lengthChange: true, // Show enties per page
-    autoWidth: true,
-    searching: true,
-    bInfo: true,
-    bSorting: true,
+    autoWidth: true,    // Control the auto width on columns
+    searching: true,    // Input search
+    bInfo: true,        // Info on footer
+    bSorting: true,     // Filter A to Z and Z to A (and numbers)
+    // Disable colums with specific filter A to Z, Z to A
+    "columnDefs": [{
+        "targets": [-1],   // More then 1 [4, 5, 6]
+        "orderable": false
+    }]
 });
+
+
+
+
+// Ждем 5 секунд и скрываем сообщение
+setTimeout(function () {
+    var alertMessage = document.getElementById('alertMessage');
+    if (alertMessage) {
+        alertMessage.style.display = 'none';
+    }
+}, 5000); // 5000 миллисекунд = 5 секунд

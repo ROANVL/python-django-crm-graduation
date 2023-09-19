@@ -1,38 +1,13 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid d-flex">
-        <a class="navbar-brand" href="{% url 'home' %}">ROANVL_CRM</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                {% if user.is_authenticated %}
-
-
-
-
-            
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li>
-
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-
-                <!-- 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacts' %}">Login</a>
-                </li>
-            -->
-                {% endif%}
-            </ul>
-            </li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
+<div class="my-navbar">
+  <a href="{% url 'home' %}" class="my-nav-logo">ROANVL_CRM</a>
+  {% if user.is_authenticated %}
+  <input class="my-search-input" type="search" id="search" placeholder="Search..."/>
+  <label class="my-nav-search_btn" for="form1" >Go</label>
+  <button class="my-search-button" type="button" >
+    <i class="fas fa-search my-icon"></i>
+  </button>
+  <a href="{% url 'logout' %}" class="my-nav-btn">Logout</a>
+  {% else %}
+  <a href="{% url 'register' %}" class="my-nav-btn">Register</a>
+  {% endif%}
+</div>

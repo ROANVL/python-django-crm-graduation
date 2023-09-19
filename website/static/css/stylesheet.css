@@ -298,56 +298,102 @@ html body {
 
 
 /* ----------------------------------
-# LOGIN / REGISTER / LOGOUT BUTTON
+# LOGIN / REGISTER / LOGOUT / 
+# SEARCH BUTTONS
 -----------------------------------*/
-.navbar-collapse {
-    /* Отключаем возможность растягивания элемента */
-    flex-grow: 0;
-    /* Создаем контейнер с горизонтальным выравниванием по центру */
+/* Стили для навигационной панели */
+.my-navbar {
+    background-color: rgb(58, 63, 65) !important;
+    height: 61px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+/* Стили для поля поиска */
+.my-search-input {
+    flex: 1;
+    height: 100%;
+    max-width: 13%;
+    margin-left: auto;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.my-search-input:hover,
+.my-search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Стили для кнопки поиска */
+.my-search-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #fff;
+    margin-right: 40px;
+}
+
+.my-nav-logo {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/* Стили для ссылок в навигационной панели */
+.my-nav-search_btn {
+    text-decoration: none;
+    color: #fff;
+    width: 4%;
+    height: 100%;
+    margin-right: 0;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
-    /* Выравниваем содержимое по вертикали по центру */
     align-items: center;
-    /* Устанавливаем белую границу толщиной 1px */
-    border: 1px solid white;
-    /* Устанавливаем ширину элемента на 7% от родительского контейнера */
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+}
+
+.my-nav-search_btn:hover {
+    background-color: #0b5ed7;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.my-nav-btn {
+    text-decoration: none;
+    color: #fff;
     width: 7%;
-    /* Убираем внутренние отступы внутри элемента */
-    padding: 0;
-    /* Ограничиваем размеры содержимого элемента */
-    overflow: hidden;
-    /* Запрещаем перенос текста на новую строку */
-    white-space: nowrap;
-    /* Если текст слишком длинный, добавляем многоточие */
-    text-overflow: ellipsis;
-    /* Выравниваем текст по центру по горизонтали */
-    text-align: center;
-    /* Устанавливаем размер шрифта (замените XXpx на желаемый размер) */
+    height: 100%;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+}
+
+.my-nav-btn:hover {
+    background-color: #0b5ed7;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Стили для иконок Font Awesome */
+.my-icon {
     font-size: 18px;
-
 }
 
-.nav-link {
-    width: 100%;
-    color: #ffffff;
-
-}
-
-.nav-item {
-    width: 100%;
-}
-
-.navbar-nav {
-    width: 100%;
-}
-
-.navbar {
-    background-color: rgb(58, 63, 65) !important;
-}
-
-.navbar-brand {
-    color: #ffffff;
-}
 
 
 
@@ -507,10 +553,18 @@ img {
 /* ----------------------------------
 # TABLES
 -----------------------------------*/
-.dataTables_wrapper {}
+.dataTables_filter {
+    display: none;
+}
+
+.dataTables_length {
+    margin-bottom: 10px !important;
+}
+
 
 .main th {
     background-color: rgb(58, 63, 65);
+    color: #ffffff;
 }
 
 /* ----------------------------------*/
