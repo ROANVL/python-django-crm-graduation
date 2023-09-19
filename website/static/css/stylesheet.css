@@ -553,17 +553,30 @@ img {
 /* ----------------------------------
 # TABLES
 -----------------------------------*/
+.dataTables_paginate {
+    margin-top: -30px;
+}
+
 .dataTables_filter {
     display: none;
 }
 
 .dataTables_length {
-    margin-bottom: 10px !important;
+    float: right !important;
+    margin-top: 10px;
 }
 
+.dt-buttons {
+    margin-bottom: 10px !important;
+    flex-wrap: nowrap !important;
+    display: inline-flex !important;
+    /* Вместо flex-wrap: wrap; */
+    gap: 5px;
+    /* Добавляем промежуток между кнопками */
+}
 
 .main th {
-    background-color: rgb(58, 63, 65);
+    background-color: rgb(58, 63, 65) !important;
     color: #ffffff;
 }
 

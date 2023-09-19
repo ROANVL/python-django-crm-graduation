@@ -344,6 +344,7 @@ html body {
     text-decoration: none;
     color: #fff;
     margin-right: 0;
+    margin-left: 10px;
 }
 
 /* Стили для ссылок в навигационной панели */
@@ -363,7 +364,7 @@ html body {
 }
 
 .my-nav-search_btn:hover {
-    border-color: #007bff;
+    background-color: #0b5ed7;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
@@ -383,7 +384,7 @@ html body {
 }
 
 .my-nav-btn:hover {
-    border-color: #007bff;
+    background-color: #0b5ed7;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
@@ -552,10 +553,18 @@ img {
 /* ----------------------------------
 # TABLES
 -----------------------------------*/
-.dataTables_wrapper {}
+.dataTables_filter {
+    display: none;
+}
+
+.dataTables_length {
+    margin-bottom: 10px !important;
+}
+
 
 .main th {
     background-color: rgb(58, 63, 65);
+    color: #ffffff;
 }
 
 /* ----------------------------------*/

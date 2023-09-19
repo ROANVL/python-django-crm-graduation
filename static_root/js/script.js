@@ -32,6 +32,11 @@ $("#myTable").DataTable({
         "orderable": false
     }]
 });
+// Enable Searchbox Outside
+var newSearch = $('#myTable').DataTable();
+$('#search').keyup(function () {
+    newSearch.search($(this).val()).draw();
+})
 
 
 
