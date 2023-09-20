@@ -2,23 +2,8 @@
 {% block content %}
 {% if user.is_authenticated %}
 
+
 <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Sales Report Chart
-      </button>
-    </h2>
-
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-        <div class="chart-container">
-          <img src="{% url 'sales_report_chart' %}" alt="Sales Report Chart" />
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="accordion-item">
     <h2 class="accordion-header">
     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
