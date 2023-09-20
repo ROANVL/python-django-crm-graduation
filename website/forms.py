@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product
+from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product, LeadStatus
 from django.forms.widgets import SelectDateWidget
 
 
@@ -202,6 +202,12 @@ class AddOrderForm(forms.ModelForm):
 
 
 class AddLeadForm(forms.ModelForm):
+    # Определите поле для статуса как выпадающий список
+    status = forms.ModelChoiceField(
+        queryset=LeadStatus.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"})
+    )
+
     class Meta:
         model = Leads
         fields = [
@@ -210,7 +216,7 @@ class AddLeadForm(forms.ModelForm):
             "phone",
             "email",
             "creation_date",
-            "status",
+            "status",  # Используйте обновленное поле status
             "lead_source",
             "lead_description",
             "expected_close_date",
@@ -221,7 +227,6 @@ class AddLeadForm(forms.ModelForm):
             "phone": forms.TextInput(attrs={"class": "form-control", "placeholder": "Phone"}),
             "email": forms.EmailInput(attrs={"class": "form-control", "placeholder": "Email"}),
             "creation_date": forms.DateInput(attrs={"class": "form-control", "placeholder": "Creation Date"}),
-            "status": forms.TextInput(attrs={"class": "form-control", "placeholder": "Status"}),
             "lead_source": forms.TextInput(attrs={"class": "form-control", "placeholder": "Lead Source"}),
             "lead_description": forms.Textarea(attrs={"class": "form-control", "placeholder": "Lead Description"}),
             "expected_close_date": forms.DateInput(attrs={"class": "form-control", "placeholder": "Expected Close Date"}),

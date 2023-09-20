@@ -3,6 +3,33 @@ from decimal import Decimal
 from django.utils import timezone
 
 
+class AbstractPerson(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=20, default='')
+    email = models.EmailField()
+
+    class Meta:
+        abstract = True
+
+
+class AbstractAddress(models.Model):
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    zipcode = models.CharField(max_length=20)
+
+    class Meta:
+        abstract = True
+
+
+class AbstractTimestampedModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        abstract = True
+
+
 class JobPosition(models.Model):
     title = models.CharField(max_length=100, unique=True)
 
@@ -23,12 +50,8 @@ class Department(models.Model):
         verbose_name_plural = "Departments"
 
 
-class Managers(models.Model):
+class Managers(AbstractPerson):
     manager_id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=20, default='')
-    email = models.EmailField()
     job_title = models.ForeignKey(JobPosition, on_delete=models.CASCADE)
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE, null=True, blank=True)
@@ -37,21 +60,17 @@ class Managers(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-class Companies(models.Model):
+class Companies(AbstractAddress, AbstractTimestampedModel):
     company_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
-    address = models.CharField(max_length=100)
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    zipcode = models.CharField(max_length=20)
     industry = models.CharField(max_length=100, default='')
     website = models.URLField(max_length=255, null=True, blank=True)
     year_founded = models.PositiveIntegerField(
-        null=True, blank=True, default=None)  # Дефолтное значение None
+        null=True, blank=True, default=None)
     number_of_employees = models.PositiveIntegerField(
-        null=True, blank=True, default=None)  # Дефолтное значение None
+        null=True, blank=True, default=None)
     manager = models.ForeignKey(
         Managers, on_delete=models.SET_NULL, null=True, blank=True, default=None)
 
@@ -69,7 +88,7 @@ class Contacts(models.Model):
     email = models.EmailField()
     description = models.TextField(null=True, blank=True)
     date_of_birth = models.DateField(
-        null=True, blank=True, default=None)  # Дефолтное значение None
+        null=True, blank=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -95,7 +114,7 @@ class Product(models.Model):
         return self.name
 
 
-class Orders(models.Model):
+class Orders(AbstractTimestampedModel):
     order_status = models.ForeignKey(
         OrderStatus, on_delete=models.SET_NULL, null=True, blank=True
     )
@@ -110,7 +129,6 @@ class Orders(models.Model):
     )
     shipping_address = models.TextField(null=True, blank=True)
     order_description = models.TextField(null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
     order_amount = models.DecimalField(
         max_digits=10, decimal_places=2, null=True, blank=True)
     manager = models.ForeignKey(
@@ -149,19 +167,24 @@ class Orders(models.Model):
         return f"Order #{self.order_id}"
 
 
-class Leads(models.Model):
+class LeadStatus(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class Leads(AbstractPerson, AbstractTimestampedModel):
     lead_id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=20, default='')
-    email = models.EmailField()
-    creation_date = models.DateField()
-    status = models.CharField(max_length=50)
+    creation_date = models.DateField(default=None)
+    lead_status = models.ForeignKey(
+        LeadStatus, on_delete=models.CASCADE, default=None)
     lead_source = models.CharField(
-        max_length=100, null=True, blank=True, default=None)  # Дефолтное значение None
-    lead_description = models.TextField(null=True, blank=True)
+        max_length=100, null=True, blank=True, default=None)
+    lead_description = models.TextField(
+        null=True, blank=True, default=None)
     expected_close_date = models.DateField(
-        null=True, blank=True, default=None)  # Дефолтное значение None
+        default=None)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

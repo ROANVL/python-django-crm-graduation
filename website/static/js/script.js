@@ -40,31 +40,31 @@ $("#myTable").DataTable({
         {   // COPY
             extend: 'copy',
             text: '<i class="fas fa-clone"></i>',
-            className: 'btn btn-secondary',
+            className: 'btn btn-primary',
             titleAttr: 'Copy',
             // Choose the columns you want to copy
             exportOptions: {
-                columns: ':not(:last-child)'  // [0, 1, 3, 5]
+                columns: ':not(.exclude-column)' // [0, 1, 3, 5], "_all", ':not(:last-child)'
             },
         },
         {   // Excel
             extend: 'excel',
             text: '<i class="fas fa-file-excel"></i>',
-            className: 'btn btn-secondary',
+            className: 'btn btn-primary',
             titleAttr: 'Excel',
             // Choose the columns you want to export to excel
             exportOptions: {
-                columns: ':not(:last-child)'  // [0, 1, 3, 5]
+                columns: ':not(.exclude-column)'  // [0, 1, 3, 5], "_all", ':not(:last-child)'
             },
         },
         {   // Print
             extend: 'print',
             text: '<i class="fas fa-print"></i>',
-            className: 'btn btn-secondary',
+            className: 'btn btn-primary',
             titleAttr: 'Print',
             // Choose the columns you want to print
             exportOptions: {
-                columns: ':not(:last-child)'  // [0, 1, 3, 5]
+                columns: ':not(.exclude-column)'  // [0, 1, 3, 5], "_all", ':not(:last-child)'
             },
             // Font size (when export ti print)
             customize: function (win) {
@@ -74,14 +74,15 @@ $("#myTable").DataTable({
                     .css('font-size', 'inherit');
             }
         },
+
         {   // PDF
             extend: 'pdf',
             text: '<i class="fas fa-file-pdf"></i>',
-            className: 'btn btn-secondary',
+            className: 'btn btn-primary',
             titleAttr: 'PDF',
             // Choose the columns you want to export to pdf
             exportOptions: {
-                columns: ':not(:last-child)'  // [0, 1, 3, 5]
+                columns: ':not(.exclude-column)'  // [0, 1, 3, 5], "_all", ':not(:last-child)'
             },
             // Center the table
             tableHeader: {

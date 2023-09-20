@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+
+
+<div class="add_btn  mb-3 text-end">
+    <a href="{% url 'add_lead' %}" class="btn btn-primary">Add lead</a> 
+</div>
+
+<table id="myTable" class="table table-striped table-hover table-bordered table-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Status</th>
+            <th>Creation date</th>
+            <th>Expected close date</th>
+            <th>Full Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Lead source</th>
+            <th>Lead description</th>
+            <th class="exclude-column" style="width: 8%;">Actions</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        {% if leads_records %}
+        {% for lead_record in leads_records %}
+
+        <tr>
+            <td>{{ lead_record.lead_status.name }}</td>
+            <td>{{ lead_record.creation_date }}</td>
+            <td>{{ lead_record.expected_close_date}}</td>
+            <td>{{ lead_record.first_name }}</td>
+            <td>{{ lead_record.last_name }}</td>
+            <td>{{ lead_record.phone }}</td>
+            <td>{{ lead_record.email }}</td>
+            <td>{{ lead_record.lead_source }}</td>
+            <td>{{ lead_record.lead_description }}</td>
+            <td id="td_actions">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Action
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'lead_record' lead_record.lead_id %}">View</a></li>
+                        <li><a class="dropdown-item" href="{% url 'update_lead' lead_record.lead_id %}">Edit</a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete_lead' lead_record.lead_id %}">Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+        {% endif %}
+
+
+    </tbody>
+</table>
+
+
+
+
+
+
+    </div>
+</div>
+
+{% else %}
+
+<div class="col-md-6 offset-md-3">
+    <h1>Login to get started</h1>
+    <br />
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" , placeholder="Username" required>
+
+        </div><br />
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" , placeholder="Password" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Login</button>
+
+    </form>
+
+
+
+    {% endif %}
+
+    {% endblock %}

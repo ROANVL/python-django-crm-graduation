@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contacts, OrderStatus, Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product
+from .models import Contacts, OrderStatus, Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product, LeadStatus
 
 
 @admin.register(Contacts)
@@ -70,7 +70,14 @@ class DepartmentAdmin(admin.ModelAdmin):
 @admin.register(Leads)
 class LeadsAdmin(admin.ModelAdmin):
     list_display = ("first_name", "last_name", "phone", "email",
-                    "creation_date", "status", "lead_source", "expected_close_date")
+                    "creation_date", "lead_status", "lead_source", "expected_close_date")
     search_fields = ("first_name", "last_name", "phone",
-                     "email", "status", "lead_source")
+                     "email", "lead_status", "lead_source")
+    list_per_page = 10
+
+
+@admin.register(LeadStatus)
+class LeadStatusAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
     list_per_page = 10

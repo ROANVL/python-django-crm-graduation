@@ -575,6 +575,11 @@ img {
     /* Добавляем промежуток между кнопками */
 }
 
+thead input {
+    width: 100%;
+    text-align: center;
+}
+
 .main th {
     background-color: rgb(58, 63, 65) !important;
     color: #ffffff;
