@@ -5,6 +5,9 @@
     <div class="view_record_card">
         <h1>View Lead Record</h1>
 
+        <strong>Lead status: </strong>
+        <p class="white-cell">{{ lead_record.lead_status }}</p>
+
         <strong>First name: </strong>
         <p class="white-cell"> {{ lead_record.first_name }}</p>
 
@@ -20,9 +23,6 @@
         <strong>Creation date: </strong>
         <p class="white-cell">{{ lead_record.creation_date }}</p>
 
-        <strong>Status: </strong>
-        <p class="white-cell">{{ lead_record.status }}</p>
-
         <strong>Lead source: </strong>
         <p class="white-cell">{{ lead_record.lead_source }}</p>
 
@@ -33,7 +33,7 @@
         <p class="white-cell">{{ lead_record.expected_close_date }}</p>
 
         <div class="form-group">
-            <a href="{% url 'update_record' lead_record.lead_id %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'update_lead' lead_record.lead_id %}" class="btn btn-primary">Update</a>
             <a href="{% url 'leads' %}" class="btn btn-primary">Back</a>
         </div>
 

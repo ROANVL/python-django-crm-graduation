@@ -59,4 +59,5 @@ urlpatterns = [
     path('sales_report/chart/', views.sales_report_chart,
          name='sales_report_chart'),
 
+
 ]

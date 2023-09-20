@@ -14,6 +14,7 @@
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
     <thead class="table-dark">
         <tr>
+            <th >ID</th>
             <th>Full Name</th>
             <th>Phone</th>
             <th>Email</th>
@@ -30,6 +31,7 @@
         {% for manager_record in managers_records %}
 
         <tr>
+            <td>{{ manager_record.manager_id }}</td>
             <td>{{ manager_record.first_name }} {{ manager_record.last_name }}</td>
             <td>{{ manager_record.phone }}</td>
             <td>{{ manager_record.email }}</td>

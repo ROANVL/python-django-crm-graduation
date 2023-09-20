@@ -389,6 +389,9 @@ html body {
 }
 
 
+
+
+
 /* Стили для иконок Font Awesome */
 .my-icon {
     font-size: 18px;
@@ -501,11 +504,17 @@ html body {
 
 .accordion {
     width: 100%;
+
 }
 
 .accordion-button {
     background-color: rgb(58, 63, 65);
     color: white;
+}
+
+.accordion-item {
+    color: black;
+    background-color: transparent;
 }
 
 .chart-container {
@@ -514,12 +523,9 @@ html body {
 
 img {
     display: block;
-    /* Делаем изображение блочным элементом */
     margin: 0 auto;
-    /* Устанавливаем автоматичесные отступы слева и справа, чтобы изображение было по центру */
     width: 70%;
     height: auto;
-    /* Это, чтобы соотношение сторон сохранялось */
 }
 
 
@@ -575,10 +581,7 @@ img {
     /* Добавляем промежуток между кнопками */
 }
 
-thead input {
-    width: 100%;
-    text-align: center;
-}
+
 
 .main th {
     background-color: rgb(58, 63, 65) !important;

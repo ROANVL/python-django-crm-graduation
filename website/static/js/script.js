@@ -22,6 +22,11 @@ window.onclick = function (event) {
 
 $("#myTable").DataTable({
     // Datatables configuration
+    order: [0, 'desc'], // 'asc'
+    //                  // scrollY: 800 vertical scrolling
+    colReorder: {       // reorder columns
+        realtime: false
+    },
     paging: true,       // Pagination
     pageLength: 10,     // Rows per page
     lengthChange: true, // Show entries per page

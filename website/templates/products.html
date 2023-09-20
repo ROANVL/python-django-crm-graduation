@@ -14,10 +14,12 @@
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
     <thead class="table-dark">
         <tr>
+            <th >ID</th>
             <th>Name</th>
+            <th>Minimum stock level</th>
             <th>Quantity</th>
             <th>Price per unit</th>
-            <th>Minimum stock level</th>
+
             <th class="exclude-column" style="width: 8%;">Actions</th>
         </tr>
     </thead>
@@ -29,10 +31,12 @@
         {% for product_record in products_records %}
 
         <tr>
+            <td>{{ product_record.id }}</td>
             <td>{{ product_record.name }}</td>
+            <td>{{ product_record.minimum_stock_level }}</td>
             <td>{{ product_record.quantity }}</td> 
             <td>{{ product_record.price_per_unit }}</td>
-            <td>{{ product_record.minimum_stock_level }}</td>
+
 
             <td id="td_actions">
                 <div class="dropdown">

@@ -14,6 +14,7 @@
 <table id="myTable" class="table table-striped table-hover table-bordered table-sm">
     <thead class="table-dark">
         <tr>
+            <th >ID</th>
             <th>Status</th>
             <th>Creation date</th>
             <th>Expected close date</th>
@@ -34,6 +35,7 @@
         {% for lead_record in leads_records %}
 
         <tr>
+            <td>{{ lead_record.lead_id }}</td>
             <td>{{ lead_record.lead_status.name }}</td>
             <td>{{ lead_record.creation_date }}</td>
             <td>{{ lead_record.expected_close_date}}</td>
