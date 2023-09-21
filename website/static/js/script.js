@@ -34,6 +34,8 @@ $(document).ready(function () {
         "columnDefs": [{
             "targets": [-1],
             "orderable": false,
+            targets: ['_all'],
+            className: "dt-head-center",
         }],
         dom: 'lBfrtip',
         buttons: [
@@ -96,7 +98,7 @@ $(document).ready(function () {
                     alignment: 'center'
                 },
                 customize: function (doc) {
-                    doc.pageMargins = [20, 30, 20, 30]; // Adjust page margins as needed
+                    doc.pageMargins = [20, 20, 20, 20]; // Adjust page margins as needed
                     doc.defaultStyle.fontSize = 7;
                     doc.styles.tableHeader.fontSize = 7;
                     // Header and footer customization
