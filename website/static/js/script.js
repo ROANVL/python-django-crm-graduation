@@ -21,7 +21,7 @@ $("#myTable").DataTable({
     // Datatables configuration
     order: [0, 'desc'], // 'asc'
     colReorder: {
-        realtime: true
+        realtime: false
     },
     paging: true,
     pageLength: 10,
@@ -31,8 +31,8 @@ $("#myTable").DataTable({
     bInfo: true,
     bSorting: true,
     "columnDefs": [{
-        "targets": [-1],
-        "orderable": false,
+        targets: [-1],
+        orderable: true,
         targets: ['_all'],
         className: "dt-head-center",
     }],
