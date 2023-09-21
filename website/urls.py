@@ -54,10 +54,20 @@ urlpatterns = [
     path('leads/update/<int:pk>/', views.update_lead, name='update_lead'),
     path('leads/delete/<int:pk>/', views.delete_lead, name='delete_lead'),
 
+
+
+    # Reports
     path('sales_report/managers/', views.sales_report_by_managers,
          name='sales_report_by_managers'),
+    path('sales_report_by/products/', views.sales_report_by_products,
+         name='sales_report_by_products'),
+
+
+    # Charts
     path('sales_report/chart/', views.sales_report_chart,
          name='sales_report_chart'),
+
+
 
 
 ]

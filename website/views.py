@@ -350,6 +350,20 @@ def update_lead(request, pk):
 
 
 # REPORSTS
+def sales_report(request):
+    managers_sales = Managers.objects.annotate(
+        total_sales=Sum('orders__order_amount'),
+        job_title_name=F('job_title__title'),
+        department_name=F('department__name')
+    )
+
+    sales_data = Orders.objects.values('product__name') \
+        .annotate(total_sold=Sum('quantity'), total_sales=Sum('order_amount')) \
+        .order_by('product__name')
+
+    return render(request, 'sales_report.html', {'managers_sales': managers_sales, 'sales_data': sales_data})
+
+
 def sales_report_by_managers(request):
     managers_sales = Managers.objects.annotate(
         total_sales=Sum('orders__order_amount'),
@@ -357,13 +371,18 @@ def sales_report_by_managers(request):
         department_name=F('department__name')
     )
 
-    context = {
-        'managers_sales': managers_sales,
-    }
-
-    return render(request, 'sales_report_by_managers.html', context)
+    return render(request, 'sales_report_by_managers.html', {'managers_sales': managers_sales, })
 
 
+def sales_report_by_products(request):
+    sales_data = Orders.objects.values('product__name') \
+        .annotate(total_sold=Sum('quantity'), total_sales=Sum('order_amount')) \
+        .order_by('product__name')
+
+    return render(request, 'sales_report_by_products.html', {'sales_data': sales_data})
+
+
+# CHARTS
 def sales_report_chart(request):
     # Query the database to get total sales for each manager,
     # and annotate the results with job titles and department names.

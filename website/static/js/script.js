@@ -17,96 +17,124 @@ window.onclick = function (event) {
 }
 
 
-
-
-
-$("#myTable").DataTable({
-    // Datatables configuration
-    order: [0, 'desc'], // 'asc'
-    //                  // scrollY: 800 vertical scrolling
-    colReorder: {       // reorder columns
-        realtime: false
-    },
-    paging: true,       // Pagination
-    pageLength: 10,     // Rows per page
-    lengthChange: true, // Show entries per page
-    autoWidth: true,    // Control the auto width on columns
-    searching: true,    // Input search
-    bInfo: true,        // Info on footer
-    bSorting: true,     // Filter A to Z and Z to A (and numbers)
-    // Disable columns with specific filter A to Z, Z to A
-    "columnDefs": [{
-        "targets": [-1],   // More than 1 [4, 5, 6]
-        "orderable": false,
-    }],
-    // BUTTONS
-    dom: 'lBfrtip',
-    buttons: [
-        {   // COPY
-            extend: 'copy',
-            text: '<i class="fas fa-clone"></i>',
-            className: 'btn btn-primary',
-            titleAttr: 'Copy',
-            // Choose the columns you want to copy
-            exportOptions: {
-                columns: ':not(.exclude-column)' // [0, 1, 3, 5], "_all", ':not(:last-child)'
-            },
+$(document).ready(function () {
+    $("#myTable1").DataTable({
+        // Datatables configuration
+        order: [0, 'desc'], // 'asc'
+        colReorder: {
+            realtime: false
         },
-        {   // Excel
-            extend: 'excel',
-            text: '<i class="fas fa-file-excel"></i>',
-            className: 'btn btn-primary',
-            titleAttr: 'Excel',
-            // Choose the columns you want to export to excel
-            exportOptions: {
-                columns: ':not(.exclude-column)'  // [0, 1, 3, 5], "_all", ':not(:last-child)'
+        paging: true,
+        pageLength: 10,
+        lengthChange: true,
+        autoWidth: true, // Adjust to fit the content within the page width
+        searching: true,
+        bInfo: true,
+        bSorting: true,
+        "columnDefs": [{
+            "targets": [-1],
+            "orderable": false,
+        }],
+        dom: 'lBfrtip',
+        buttons: [
+            {   // COPY
+                extend: 'copy',
+                text: '<i class="fas fa-clone"></i>',
+                className: 'btn btn-primary',
+                titleAttr: 'Copy',
+                exportOptions: {
+                    columns: ':not(.exclude-column)'
+                },
             },
-        },
-        {   // Print
-            extend: 'print',
-            text: '<i class="fas fa-print"></i>',
-            className: 'btn btn-primary',
-            titleAttr: 'Print',
-            // Choose the columns you want to print
-            exportOptions: {
-                columns: ':not(.exclude-column)'  // [0, 1, 3, 5], "_all", ':not(:last-child)'
+            {   // Excel
+                extend: 'excel',
+                text: '<i class="fas fa-file-excel"></i>',
+                className: 'btn btn-primary',
+                titleAttr: 'Excel',
+                exportOptions: {
+                    columns: ':not(.exclude-column)'
+                },
             },
-            // Font size (when export ti print)
-            customize: function (win) {
-                $(win.document.body).css('font-size', '10pt')
-                $(win.document.body).find('table')
-                    .addClass('compact')
-                    .css('font-size', 'inherit');
+            {   // Print
+                extend: 'print',
+                text: '<i class="fas fa-print"></i>',
+                className: 'btn btn-primary',
+                titleAttr: 'Print',
+                exportOptions: {
+                    columns: ':not(.exclude-column)'
+                },
+                customize: function (win) {
+                    // Устанавливаем стили для печати
+                    $(win.document.body).css('font-size', '10pt');
+
+                    // Добавляем стили для таблицы
+                    $(win.document.body).find('table')
+                        .addClass('table table-bordered table-striped')
+                        .css({
+                            'font-size': 'inherit',
+                            'page-break-inside': 'auto',
+                            'width': '95%',
+                            'margin': '20px' // Устанавливаем отступы от краев в портретной ориентации
+                        });
+
+                    // Добавляем стили для ландшафтной (альбомной) ориентации
+                    // Обратите внимание, что здесь мы используем @media (orientation: landscape) для настройки ландшафтной ориентации.
+                    $(win.document.head).append('<style>@media print { @page { size: landscape; } }</style>');
+                }
+            },
+            {   // PDF
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf"></i>',
+                className: 'btn btn-primary',
+                titleAttr: 'PDF',
+                exportOptions: {
+                    columns: ':not(.exclude-column)'
+                },
+                orientation: 'landscape',
+                pageSize: 'A4',
+                tableHeader: {
+                    alignment: 'center'
+                },
+                customize: function (doc) {
+                    doc.pageMargins = [20, 30, 20, 30]; // Adjust page margins as needed
+                    doc.defaultStyle.fontSize = 7;
+                    doc.styles.tableHeader.fontSize = 7;
+                    // Header and footer customization
+                    doc['header'] = (function () {
+                        // Your header content here
+                    });
+                    doc['footer'] = (function (page, pages) {
+                        // Your footer content here
+                    });
+
+
+                    // Table layout customization
+                    var objLayout = {};
+                    objLayout['hLineWidth'] = function (i) {
+                        return 0.5;
+                    };
+                    objLayout['vLineWidth'] = function (i) {
+                        return 0.5;
+                    };
+                    objLayout['hLineColor'] = function (i) {
+                        return '#aaa';
+                    };
+                    objLayout['vLineColor'] = function (i) {
+                        return '#aaa';
+                    };
+                    objLayout['paddingLeft'] = function (i) {
+                        return 4;
+                    };
+                    objLayout['paddingRight'] = function (i) {
+                        return 4;
+                    };
+                    doc.content[0].layout = objLayout;
+                }
             }
-        },
-
-        {   // PDF
-            extend: 'pdf',
-            text: '<i class="fas fa-file-pdf"></i>',
-            className: 'btn btn-primary',
-            titleAttr: 'PDF',
-            // Choose the columns you want to export to pdf
-            exportOptions: {
-                columns: ':not(.exclude-column)'  // [0, 1, 3, 5], "_all", ':not(:last-child)'
-            },
-            // Center the table
-            tableHeader: {
-                alignment: 'center'
-            },
-            // Font size and optimazation
-            customize: function (doc) {
-                doc.styles.tableHeader.alignment = 'center';  // Header position
-                doc.styles.tableBodyOdd.alignment = 'center';  // Body position 1 (grey_)
-                doc.styles.tableBodyEven.alignment = 'center';  // Body position 2 (white)
-                doc.styles.tableHeader.fontSize = 7;  // Header font size            }
-                doc.defaultStyle.fonySize = 6;  // Body font size            }
-                // To get 100% width of the table
-                doc.content[1].table.widths = Array(doc.content[1].table.body[1].length + 1).join('*').split('');
-            },
-        },
-
-    ]
+        ]
+    });
 });
+
 
 
 
