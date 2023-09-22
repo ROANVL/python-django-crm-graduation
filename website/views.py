@@ -8,7 +8,6 @@ from django.db.models import Sum, F
 from django.http import HttpResponse
 import io
 import matplotlib.pyplot as plt
-from django.db.models import Count
 
 
 def logout_user(request):

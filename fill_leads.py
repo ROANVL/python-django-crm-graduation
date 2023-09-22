@@ -9,7 +9,7 @@ fake = Faker(locale="en_US")
 advertising_sources = ["Internet", "Radio", "TV", "Social Media", "Print"]
 
 # Текст о продажах компьютерной техники
-sales_text = "We offer a wide range of computer hardware and software solutions to meet your technology needs."
+sales_text = "Topic of discussion: Computer and hardware supply."
 
 
 def creation_date():

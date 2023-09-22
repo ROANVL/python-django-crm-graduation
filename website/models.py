@@ -110,9 +110,18 @@ class Product(models.Model):
     price_per_unit = models.DecimalField(max_digits=10, decimal_places=2)
     minimum_stock_level = models.IntegerField(default=None, blank=False)
     maximum_stock_level = models.IntegerField(default=None, blank=False)
+    purchase_needed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
+
+
+class ProductOrder(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity_to_order = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"Order for {self.product.name} (Quantity to Order: {self.quantity_to_order})"
 
 
 class Orders(AbstractTimestampedModel):

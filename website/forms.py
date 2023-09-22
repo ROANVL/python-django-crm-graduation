@@ -81,11 +81,10 @@ class ProductForm(forms.ModelForm):
 
         widgets = {
             'name': forms.TextInput(attrs={"class": "form-control", "placeholder": "Name"}),
-            'quantity': forms.TextInput(attrs={"class": "form-control", "placeholder": "Quantity"}),
-            'minimum_stock_level': forms.TextInput(attrs={"class": "form-control", "placeholder": "Minimum stock level"}),
-            'maximum_stock_level': forms.TextInput(attrs={"class": "form-control", "placeholder": "Maximum stock level"}),
-            'price_per_unit': forms.TextInput(attrs={"class": "form-control", "placeholder": "Price per unit"}),
-
+            'quantity': forms.NumberInput(attrs={"class": "form-control", "placeholder": "Quantity", "type": "number"}),
+            'minimum_stock_level': forms.NumberInput(attrs={"class": "form-control", "placeholder": "Minimum stock level", "type": "number"}),
+            'maximum_stock_level': forms.NumberInput(attrs={"class": "form-control", "placeholder": "Maximum stock level", "type": "number"}),
+            'price_per_unit': forms.NumberInput(attrs={"class": "form-control", "placeholder": "Price per unit", "type": "number", "step": "0.01"}),
         }
 
 
