@@ -70,8 +70,6 @@ html body {
 /* ----------------------------------*/
 
 
-
-
 /* ----------------------------------
 # SIDENAV
 -----------------------------------*/
@@ -342,7 +340,7 @@ html body {
 
 .my-nav-logo {
     text-decoration: none;
-    color: #fff;
+    color: #007bff;
     margin-right: 0;
     margin-left: 10px;
 }
@@ -387,6 +385,9 @@ html body {
     background-color: #0b5ed7;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
+
+
 
 
 /* Стили для иконок Font Awesome */
@@ -501,11 +502,17 @@ html body {
 
 .accordion {
     width: 100%;
+
 }
 
 .accordion-button {
     background-color: rgb(58, 63, 65);
     color: white;
+}
+
+.accordion-item {
+    color: black;
+    background-color: transparent;
 }
 
 .chart-container {
@@ -514,12 +521,9 @@ html body {
 
 img {
     display: block;
-    /* Делаем изображение блочным элементом */
     margin: 0 auto;
-    /* Устанавливаем автоматичесные отступы слева и справа, чтобы изображение было по центру */
     width: 70%;
     height: auto;
-    /* Это, чтобы соотношение сторон сохранялось */
 }
 
 
@@ -553,17 +557,32 @@ img {
 /* ----------------------------------
 # TABLES
 -----------------------------------*/
+.dataTables_paginate {
+    margin-top: -30px;
+}
+
 .dataTables_filter {
     display: none;
 }
 
 .dataTables_length {
+    float: right !important;
+    margin-top: 10px;
+}
+
+.dt-buttons {
     margin-bottom: 10px !important;
+    flex-wrap: nowrap !important;
+    display: inline-flex !important;
+    /* Вместо flex-wrap: wrap; */
+    gap: 5px;
+    /* Добавляем промежуток между кнопками */
 }
 
 
+
 .main th {
-    background-color: rgb(58, 63, 65);
+    background-color: rgb(58, 63, 65) !important;
     color: #ffffff;
 }
 
