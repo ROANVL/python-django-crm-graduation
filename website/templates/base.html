@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
     <!-- Static CSS -->
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css"/>
-    <title>ROANVL_CRM</title>
+    {% block title %}{% endblock %}
   </head>
 
  <body>
@@ -56,6 +56,7 @@
       {% endif %}
 
       <main class="main">
+      
           {% block content %}
           {% endblock %}
       </main> 

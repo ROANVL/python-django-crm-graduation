@@ -453,7 +453,7 @@ def sales_report_chart(request):
     ax = plt.subplot(111)
 
     # Create bars for the bar chart with specified color and width.
-    bars = ax.bar(data_names, data_values, color='#06F', width=0.6)
+    bars = ax.bar(data_names, data_values, color='#0e1ce8', width=0.5)
 
     # Set the label and font style for the x-axis.
     plt.xlabel('Managers', fontstyle='italic', fontsize=16)
