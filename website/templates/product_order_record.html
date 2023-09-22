@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <div class="view_record_card">
+        <h1>View Product Order Record</h1>
+
+        <strong>ID: </strong>
+        <p class="white-cell"> {{ product_order_record.id }}</p>
+
+        <strong>Product: </strong>
+        <p class="white-cell"> {{ product_order_record.product }}</p>
+
+        <strong>Quantity to order: </strong>
+        <p class="white-cell">{{ product_order_record.quantity_to_order }}</p> 
+
+
+
+        
+        
+        <div class="form-group">
+            <a href="{% url 'update_product_order' product_order_record.id %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'product_orders' %}" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock%}

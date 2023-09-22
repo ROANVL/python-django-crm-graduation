@@ -68,6 +68,22 @@ urlpatterns = [
          name='sales_report_chart'),
 
 
+    path('products', views.products, name='products'),
+    path('product/<int:pk>/', views.product_record, name='product_record'),
+    path('product/add/', views.add_product, name='add_product'),
+    path('product/update/<int:pk>/', views.update_product, name='update_product'),
+    path('product/delete/<int:pk>/', views.delete_product, name='delete_product'),
+
+
+
+    path('product_orders/', views.product_orders, name='product_orders'),
+    path('product_order/<int:pk>/', views.product_order_record,
+         name='product_order_record'),
+    path('product_order/delete/<int:pk>/',
+         views.delete_product_order, name='delete_product_order'),
+    path('product_order/add/', views.add_product_order, name='add_product_order'),
+    path('product_order/update/<int:pk>/',
+         views.update_product_order, name='update_product_order'),
 
 
 ]

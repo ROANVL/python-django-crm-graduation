@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+
+
+<div class="add_btn  mb-3 text-end">
+    <a href="{% url 'add_product_order' %}" class="btn btn-primary">Add product order</a>
+</div>
+
+<table id="myTable" class="table table-striped table-hover table-bordered table-sm">
+    <thead class="table-dark">
+        <tr>
+            <th >ID</th>
+            <th>Product</th>
+            <th>Quantity to order</th>
+
+
+
+            <th class="exclude-column" style="width: 8%;">Actions</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        {% if product_orders_records %}
+        {% for product_order_record in product_orders_records %}
+
+        <tr>
+            <td>{{ product_order_record.id }}</td>
+            <td>{{ product_order_record.product }}</td>
+            <td>{{ product_order_record.quantity_to_order }}</td>
+
+            <td id="td_actions">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Action
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'product_order_record' product_order_record.id %}">View</a></li>
+                        <li><a class="dropdown-item" href="{% url 'update_product_order' product_order_record.id %}">Edit</a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete_product_order' product_order_record.id %}">Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+        {% endif %}
+
+
+    </tbody>
+</table>
+
+
+
+{% else %}
+
+<div class="col-md-6 offset-md-3">
+    <h1>Login to get started</h1>
+    <br />
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" , placeholder="Username" required>
+
+        </div><br />
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" , placeholder="Password" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Login</button>
+
+    </form>
+
+
+
+{% endif %}
+
+{% endblock %}

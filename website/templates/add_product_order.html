@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <form method="POST" action="{% url 'add_product_order' %}" class="add_record_form">
+        {% csrf_token %}
+        <h1>Add Product Order</h1>
+        {{ form.as_p }}
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add Order</button>   <!-- btn btn-success   green-->
+            <a href="{% url 'product_orders' %}" class="btn btn-primary">Back</a>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

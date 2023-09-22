@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product, LeadStatus
+from .models import Contacts, Companies, Managers, Orders, OrderStatus, Leads, JobPosition, Department, Product, LeadStatus, ProductOrder
 from django.forms.widgets import SelectDateWidget
 
 
@@ -234,3 +234,9 @@ class AddLeadForm(forms.ModelForm):
             "lead_description": forms.Textarea(attrs={"class": "form-control", "placeholder": "Lead Description"}),
             "expected_close_date": forms.DateInput(attrs={"class": "form-control", "placeholder": "Expected Close Date"}),
         }
+
+
+class ProductOrderForm(forms.ModelForm):
+    class Meta:
+        model = ProductOrder
+        fields = ['product', 'quantity_to_order']

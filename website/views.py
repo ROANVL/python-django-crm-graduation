@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .login_decorator import login_required
-from .forms import SignUpForm, AddRecordForm, AddCompanyForm, AddManagerForm, AddOrderForm, AddLeadForm, ProductForm
-from .models import Contacts, Managers, Companies, Orders, Leads, Product
+from .forms import SignUpForm, AddRecordForm, AddCompanyForm, AddManagerForm, AddOrderForm, AddLeadForm, ProductForm, ProductOrderForm
+from .models import Contacts, Managers, Companies, Orders, Leads, Product, ProductOrder
 from django.db.models import Sum, F
 from django.http import HttpResponse
 import io
@@ -348,7 +348,54 @@ def update_lead(request, pk):
     return render(request, "update_lead.html", {"form": form})
 
 
+@login_required
+def product_orders(request):
+    product_orders_records = ProductOrder.objects.all()
+    return render(request, 'product_orders.html', {'product_orders_records': product_orders_records})
+
+
+@login_required
+def product_order_record(request, pk):
+    product_order_record = ProductOrder.objects.get(id=pk)
+    return render(request, 'product_order_record.html', {'product_order_record': product_order_record})
+
+
+@login_required
+def delete_product_order(request, pk):
+    delete_it = ProductOrder.objects.get(id=pk)
+    delete_it.delete()
+    messages.success(
+        request, "The product order has been deleted successfully.")
+    return redirect('product_orders')
+
+
+@login_required
+def add_product_order(request):
+    form = ProductOrderForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, "The product order has been successfully added.")
+            return redirect("product_orders")
+    return render(request, 'add_product_order.html', {"form": form})
+
+
+@login_required
+def update_product_order(request, pk):
+    current_record = ProductOrder.objects.get(id=pk)
+    form = ProductOrderForm(request.POST or None, instance=current_record)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, "The product order has been successfully updated!")
+            return redirect("product_orders")
+    return render(request, "update_product_order.html", {"form": form})
+
 # REPORSTS
+
+
 def sales_report(request):
     managers_sales = Managers.objects.annotate(
         total_sales=Sum('orders__order_amount'),
