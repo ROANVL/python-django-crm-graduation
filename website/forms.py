@@ -204,7 +204,6 @@ class AddOrderForm(forms.ModelForm):
 
 
 class AddLeadForm(forms.ModelForm):
-    # Определите поле для статуса как выпадающий список
     lead_status = forms.ModelChoiceField(
         queryset=LeadStatus.objects.all(),
         widget=forms.Select(attrs={"class": "form-control"})
@@ -219,7 +218,6 @@ class AddLeadForm(forms.ModelForm):
             "phone",
             "email",
             "creation_date",
-            # Используйте обновленное поле status
             "lead_source",
             "lead_description",
             "expected_close_date",
