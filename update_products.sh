@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Активация виртуального окружения Django
 source /home/andrei/work/python/dcrm/virt/bin/activate
 
